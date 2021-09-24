@@ -24,10 +24,7 @@ import com.chuntian.theme.ComposeCookBookCopyTheme
 
 class DialogActivity : ComponentActivity() {
     private val isDarkTheme: Boolean by lazy {
-        intent?.getBooleanExtra(
-            DialogActivity.DARK_THEME,
-            false
-        ) ?: false
+        intent?.getBooleanExtra(DARK_THEME, false) ?: false
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,7 +58,9 @@ fun DialogScreen(onBack: () -> Unit) {
                     Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null)
                 }
             })
-    }, content = {})
+    }, content = {
+        DialogsOptionList()
+    })
 }
 
 @Composable
@@ -115,8 +114,10 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
         DialogType.IMAGE -> AlertDialog(onDismissRequest = onDismiss,
             title = { Text(text = item.title, style = MaterialTheme.typography.h6) },
             text = {
-                Text(text = item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
-                Image(painter = painterResource(id = item.imageId), contentDescription = null)
+                Column {
+                    Text(text = item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
+                    Image(painter = painterResource(id = item.imageId), contentDescription = null)
+                }
             },
             buttons = {
                 TextButton(onClick = onDismiss, modifier = Modifier.padding(8.dp)) {
@@ -124,29 +125,37 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
                 }
             }
         )
-        DialogType.LONG_DIALOG -> AlertDialog(
-            title = { Text(text = item.title, style = MaterialTheme.typography.h6) },
-            text = {
-                Text(text = item.subtitle, modifier = Modifier.padding(8.dp))
-                Image(painter = painterResource(id = item.imageId), contentDescription = null)
-                Text(
-                    text = item.subtitle + item.title + item.subtitle + item.title,
-                    style = MaterialTheme.typography.subtitle2
-                )
-            },
-            buttons = {
-                TextButton(onClick = onDismiss, modifier = Modifier.padding(8.dp)) {
-                    Text(text = "Ok")
-                }
-            },
-            onDismissRequest = onDismiss,
-        )
+        DialogType.LONG_DIALOG ->
+            AlertDialog(
+                title = { Text(text = item.title, style = MaterialTheme.typography.h6) },
+                text = {
+                    Column {
+                        Text(text = item.subtitle, modifier = Modifier.padding(8.dp))
+                        Image(
+                            painter = painterResource(id = item.imageId),
+                            contentDescription = null
+                        )
+                        Text(
+                            text = item.subtitle + item.title + item.subtitle + item.title,
+                            style = MaterialTheme.typography.subtitle2
+                        )
+                    }
+                },
+                buttons = {
+                    TextButton(onClick = onDismiss, modifier = Modifier.padding(8.dp)) {
+                        Text(text = "Ok")
+                    }
+                },
+                onDismissRequest = onDismiss,
+            )
         DialogType.ROUNDED -> AlertDialog(
             onDismissRequest = onDismiss,
             title = { Text(text = item.title, style = MaterialTheme.typography.h6) },
             text = {
-                Text(text = item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
-                Image(painter = painterResource(id = item.imageId), contentDescription = null)
+                Column {
+                    Text(text = item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
+                    Image(painter = painterResource(id = item.imageId), contentDescription = null)
+                }
             },
             buttons = {
                 TextButton(onClick = onDismiss, modifier = Modifier.padding(8.dp)) {

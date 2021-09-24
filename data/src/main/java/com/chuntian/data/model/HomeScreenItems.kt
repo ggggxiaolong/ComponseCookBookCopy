@@ -19,7 +19,7 @@ sealed class HomeScreenItems {
     object CustomFling : HomeScreenItems()
     object MotionLayout : HomeScreenItems()
 
-    val home: String
+    val name: String
         get() = when(this) {
             is Dialogs -> "Dialogs"
             is TabLayout -> "TabLayout"

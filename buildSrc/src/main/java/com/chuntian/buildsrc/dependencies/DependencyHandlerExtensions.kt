@@ -1,5 +1,7 @@
 package com.chuntian.buildsrc.dependencies
+
 import org.gradle.api.artifacts.dsl.DependencyHandler
+import org.gradle.kotlin.dsl.add
 
 fun DependencyHandler.addComposeOfficialDependencies() {
     composeOfficialDependencies.forEach {
@@ -32,7 +34,14 @@ fun DependencyHandler.addKotlinTestDependencies() {
 }
 
 fun DependencyHandler.addDataDependencies() {
-    add("kapt", Dependencies.roomCompiler)
+    add("kapt", Dependencies.roomCompiler){
+        exclude(
+            mapOf(
+                "group" to "org.jetbrains",
+                "module" to "annotations"
+            )
+        )
+    }
     dataDependencies.forEach {
         add("implementation", it)
     }

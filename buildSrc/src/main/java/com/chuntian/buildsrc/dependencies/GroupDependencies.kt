@@ -4,6 +4,7 @@ internal val composeOfficialDependencies = listOf(
     Dependencies.composeUi,
     Dependencies.composeUiTooling,
     Dependencies.composeMaterial,
+    Dependencies.composeMaterialIconsExtended,
     Dependencies.composeRuntimeLivedata,
     Dependencies.composeConstraintLayout,
     Dependencies.composePaging,
@@ -36,7 +37,7 @@ internal val kotlinTestDependencies = listOf(
 )
 
 internal val dataDependencies = listOf(
-    Dependencies.roomCompiler,
+    Dependencies.roomRuntime,
     Dependencies.roomKtx,
     Dependencies.androidPagingRuntime
 )
