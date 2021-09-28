@@ -31,4 +31,6 @@ object Versions {
     const val junit = "5.7.0"
     const val truth = "1.1.3"
     const val androidXJunit = "1.1.2"
+    const val desugar = "1.1.5"
+    const val dialogs = "0.6.0"
 }

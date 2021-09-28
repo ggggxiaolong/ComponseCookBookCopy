@@ -22,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.chuntian.composecookbookcopy.theme.AppThemeState
 import com.chuntian.composecookbookcopy.theme.SystemUIController
 import com.chuntian.composecookbookcopy.ui.home.HomeScreen
+import com.chuntian.composecookbookcopy.utils.LocalThemeState
 import com.chuntian.composecookbookcopy.utils.RotateIcon
 import com.chuntian.composecookbookcopy.utils.TestTags
 import com.chuntian.theme.*
@@ -35,8 +36,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             val systemUIController = remember { SystemUIController(window) }
             val appTheme = remember { mutableStateOf(AppThemeState()) }
-            BaseView(appThemeState = appTheme.value, systemUIController = systemUIController) {
-                MainAppContent(appThemeState = appTheme)
+            CompositionLocalProvider(LocalThemeState provides appTheme.value) {
+                BaseView(appThemeState = appTheme.value, systemUIController = systemUIController) {
+                    MainAppContent(appThemeState = appTheme)
+                }
             }
         }
     }
@@ -174,7 +177,7 @@ fun BaseView(
         ColorPallet.ORANGE -> Orange700
         ColorPallet.GREEN -> Green700
     }
-    systemUIController?.setStatusBarColor(color, appThemeState.darkTheme)
+    systemUIController?.setSystemBarsColor(color, appThemeState.darkTheme)
     ComposeCookBookCopyTheme(
         darkTheme = appThemeState.darkTheme,
         colorPallet = appThemeState.pallet

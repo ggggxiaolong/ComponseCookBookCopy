@@ -94,3 +94,7 @@ fun DependencyHandler.addThirdPartyUiDependencies() {
         add("implementation", it)
     }
 }
+
+fun DependencyHandler.addDesugarDependencies(){
+    add("coreLibraryDesugaring", Dependencies.desugar)
+}

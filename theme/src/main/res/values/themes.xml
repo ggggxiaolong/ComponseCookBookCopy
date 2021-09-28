@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DateWeekLight" parent="@android:style/TextAppearance.Material.Caption">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    <style name="DateWeekDark" parent="@android:style/TextAppearance.Material.Caption">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="MonthLight" parent="@android:style/TextAppearance.Material.Body2">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    <style name="MonthDark" parent="@android:style/TextAppearance.Material.Body2">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="CalendarLight" parent="android:Theme.Material.Light">
+        <item name="android:dateTextAppearance">@style/DateWeekLight</item>
+        <item name="android:weekDayTextAppearance">@style/DateWeekLight</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
+    </style>
+    <style name="CalendarDark" parent="android:Theme.Material.Light">
+        <item name="android:dateTextAppearance">@style/DateWeekDark</item>
+        <item name="android:weekDayTextAppearance">@style/DateWeekDark</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:numbersBackgroundColor">#555555</item>
+    </style>
+
+    <style name="CalendarLightGreen" parent="CalendarLight">
+        <item name="android:colorAccent">@color/green_500</item>
+    </style>
+    <style name="CalendarDarkGreen" parent="CalendarDark">
+        <item name="android:colorAccent">@color/green_200</item>
+    </style>
+
+    <style name="CalendarLightBlue" parent="CalendarLight">
+        <item name="android:colorAccent">@color/blue_500</item>
+    </style>
+
+    <style name="CalendarDarkBlue" parent="CalendarDark">
+        <item name="android:colorAccent">@color/blue_200</item>
+    </style>
+
+    <style name="CalendarLightOrange" parent="CalendarLight">
+        <item name="android:colorAccent">@color/orange_500</item>
+    </style>
+    <style name="CalendarDarkOrange" parent="CalendarDark">
+        <item name="android:colorAccent">@color/orange_200</item>
+    </style>
+
+    <style name="CalendarLightPurple" parent="CalendarLight">
+        <item name="android:colorAccent">@color/purple_500</item>
+        <item name="android:numbersBackgroundColor">@color/purple_500</item>
+    </style>
+    <style name="CalendarDarkPurple" parent="CalendarDark">
+        <item name="android:colorAccent">@color/purple_200</item>
+        <item name="android:numbersBackgroundColor">@color/purple_500</item>
+    </style>
+    <style name="TimePicker">
+        <item name="android:numbersBackgroundColor">@color/green_500</item>
+        <item name="android:numbersSelectorColor">@color/green_500</item>
+    </style>
+</resources>

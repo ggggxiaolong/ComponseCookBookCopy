@@ -11,6 +11,7 @@ android {
     compileSdk = ProjectConfigs.compileSdkVersion
 
     defaultConfig {
+        multiDexEnabled = true
         applicationId = ProjectConfigs.applicationId
         minSdk = ProjectConfigs.minSdkVersion
         targetSdk = ProjectConfigs.targetSdkVersion
@@ -31,6 +32,7 @@ android {
         }
     }
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
@@ -62,6 +64,7 @@ android {
 dependencies {
     implementation(project(":data"))
     implementation(project(":theme"))
+    addDesugarDependencies()
     addKotlinDependencies()
     addDataDependencies()
     addComposeOfficialDependencies()

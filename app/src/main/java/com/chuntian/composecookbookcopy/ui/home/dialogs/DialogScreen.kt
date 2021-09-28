@@ -1,10 +1,5 @@
 package com.chuntian.composecookbookcopy.ui.home.dialogs
 
-import android.content.Context
-import android.content.Intent
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -21,31 +16,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.chuntian.data.DemoDataProvider
 import com.chuntian.theme.ComposeCookBookCopyTheme
-
-class DialogActivity : ComponentActivity() {
-    private val isDarkTheme: Boolean by lazy {
-        intent?.getBooleanExtra(DARK_THEME, false) ?: false
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            ComposeCookBookCopyTheme(isDarkTheme) {
-                DialogScreen {
-                    onBackPressed()
-                }
-            }
-        }
-    }
-
-    companion object {
-        private const val DARK_THEME = "darkTheme"
-        fun newIntent(context: Context, isDarkTheme: Boolean) =
-            Intent(context, DialogActivity::class.java).apply {
-                putExtra(DARK_THEME, isDarkTheme)
-            }
-    }
-}
+import com.vanpra.composematerialdialogs.*
+import com.vanpra.composematerialdialogs.datetime.date.datepicker
+import com.vanpra.composematerialdialogs.datetime.time.timepicker
 
 @Composable
 fun DialogScreen(onBack: () -> Unit) {
@@ -188,7 +161,9 @@ fun DialogsOptionList() {
             DialogType.VERTICAL_BUTTON to "Dialog with Vertical buttons",
             DialogType.IMAGE to "Dialog with Image",
             DialogType.LONG_DIALOG to "Long Dialog",
-            DialogType.ROUNDED to "Extra round dialog"
+            DialogType.ROUNDED to "Extra round dialog",
+            DialogType.DATE_PICKER to "Date Picker",
+            DialogType.TIME_PICKER to "Time Picker",
         )
         for (item in dialogTypes) {
             Button(
@@ -207,5 +182,13 @@ fun DialogsOptionList() {
 fun DefaultPreview3() {
     ComposeCookBookCopyTheme {
         DialogsOptionList()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewPicker() {
+    ComposeCookBookCopyTheme {
+        CalendarPicker({ _ -> }, {})
     }
 }

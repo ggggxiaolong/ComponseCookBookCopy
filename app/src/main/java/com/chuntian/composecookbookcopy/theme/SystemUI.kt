@@ -37,20 +37,20 @@ class SystemUIController(private val window: Window) {
         transformColorForLightContent: (Color) -> Color = BlackScrimmed
     ) {
         val navBarColor = when {
-            Build.VERSION.SDK_INT >= 29 -> Color.Transparent
-            darkIcons && Build.VERSION.SDK_INT < 26 -> transformColorForLightContent(color)
-            else -> color
+//            Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q -> Color.Transparent
+            darkIcons && Build.VERSION.SDK_INT < Build.VERSION_CODES.O -> transformColorForLightContent(color)
+            else -> transformColorForLightContent(color)
         }
         window.navigationBarColor = navBarColor.toArgb()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            if (darkIcons) {
-                window.decorView.systemUiVisibility =
-                    window.decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
-            } else {
-                window.decorView.systemUiVisibility =
-                    window.decorView.systemUiVisibility and View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR.inv()
-            }
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            if (darkIcons) {
+//                window.decorView.systemUiVisibility =
+//                    window.decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+//            } else {
+//                window.decorView.systemUiVisibility =
+//                    window.decorView.systemUiVisibility and View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR.inv()
+//            }
+//        }
     }
 
     fun setSystemBarsColor(

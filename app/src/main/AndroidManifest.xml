@@ -22,13 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.home.dialogs.DialogActivity" />
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="@string/test_admob_id" /> <!-- insert your maps api key below to see maps -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="" />
     </application>
 
 </manifest>

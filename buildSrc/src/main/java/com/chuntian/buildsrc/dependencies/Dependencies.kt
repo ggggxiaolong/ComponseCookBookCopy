@@ -31,6 +31,10 @@ object Dependencies {
     const val composeUiTestJunit4 = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
     const val composeUiTestManifest = "androidx.compose.ui:ui-test-manifest:${Versions.compose}"
 
+    const val desugar = "com.android.tools:desugar_jdk_libs:${Versions.desugar}"
+
+    const val dialogsCore = "io.github.vanpra.compose-material-dialogs:core:${Versions.dialogs}"
+    const val dialogsDatePicker = "io.github.vanpra.compose-material-dialogs:datetime:${Versions.dialogs}"
     /**
      * Custom fling behaviour
      * refer to https://github.com/iamjosephmj/flinger for more insights on the library

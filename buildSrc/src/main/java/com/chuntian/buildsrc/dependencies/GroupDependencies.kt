@@ -59,8 +59,8 @@ internal val coreAndroidUiDependencies = listOf(
 
 internal val googleAndroidLibraries = listOf(
     Dependencies.androidExoPlayer,
-    Dependencies.playServicesAds,
-    Dependencies.playServicesMaps,
+//    Dependencies.playServicesAds,
+//    Dependencies.playServicesMaps,
 //    Dependencies.googleMaps
 )
 
@@ -89,5 +89,7 @@ internal val androidInstrumentationTestsDependencies = listOf(
 internal val thirdPartyUiDependencies = listOf(
     Dependencies.coilAccompanist,
     Dependencies.coilCompose,
-    Dependencies.lottie
+    Dependencies.lottie,
+    Dependencies.dialogsCore,
+    Dependencies.dialogsDatePicker
 )
