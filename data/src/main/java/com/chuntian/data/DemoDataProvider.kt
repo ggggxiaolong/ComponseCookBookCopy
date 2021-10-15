@@ -326,6 +326,7 @@ object DemoDataProvider {
     val homeScreenListItems = listOf(
         HomeScreenItems.ListView("Vertical"),
         HomeScreenItems.ListView("Horizontal"),
+        HomeScreenItems.ListView("Grid"),
         HomeScreenItems.Modifiers,
         HomeScreenItems.Layouts,
         HomeScreenItems.ConstrainsLayout,

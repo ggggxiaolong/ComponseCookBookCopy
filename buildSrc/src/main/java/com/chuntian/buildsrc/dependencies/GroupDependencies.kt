@@ -16,7 +16,8 @@ internal val composeOfficialDependencies = listOf(
 internal val composeThirdPartyDependencies = listOf(
     Dependencies.fontAwesomeCompose,
     Dependencies.composeLottie,
-    Dependencies.flinger
+    Dependencies.flinger,
+    Dependencies.timber,
 )
 
 internal val composeDebugDependencies = listOf(
@@ -90,6 +91,6 @@ internal val thirdPartyUiDependencies = listOf(
     Dependencies.coilAccompanist,
     Dependencies.coilCompose,
     Dependencies.lottie,
-    Dependencies.dialogsCore,
-    Dependencies.dialogsDatePicker
+//    Dependencies.dialogsCore,
+//    Dependencies.dialogsDatePicker
 )

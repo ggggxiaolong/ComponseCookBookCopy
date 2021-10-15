@@ -28,6 +28,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.chuntian.composecookbookcopy.theme.AppThemeState
 import com.chuntian.composecookbookcopy.ui.home.PATH_DIALOGS
+import com.chuntian.composecookbookcopy.ui.home.PATH_LIST
+import com.chuntian.composecookbookcopy.ui.home.PATH_LIST_PREFIX
 import com.chuntian.composecookbookcopy.utils.LocalNavControl
 import com.chuntian.composecookbookcopy.utils.TestTags
 import com.chuntian.data.DemoDataProvider
@@ -76,6 +78,7 @@ fun HomeRoot(appThemeState: MutableState<AppThemeState>) {
 
 fun homeRootItemClicked(homeScreenItems: HomeScreenItems, controller: NavController) {
     when (homeScreenItems) {
+        is HomeScreenItems.ListView -> controller.navigate(PATH_LIST_PREFIX + homeScreenItems.type)
         HomeScreenItems.Dialogs -> controller.navigate(PATH_DIALOGS)
         else -> controller.navigate(PATH_DIALOGS)
     }

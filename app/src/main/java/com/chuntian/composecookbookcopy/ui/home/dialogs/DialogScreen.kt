@@ -1,5 +1,6 @@
 package com.chuntian.composecookbookcopy.ui.home.dialogs
 
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -11,14 +12,17 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.chuntian.data.DemoDataProvider
 import com.chuntian.theme.ComposeCookBookCopyTheme
-import com.vanpra.composematerialdialogs.*
-import com.vanpra.composematerialdialogs.datetime.date.datepicker
-import com.vanpra.composematerialdialogs.datetime.time.timepicker
+import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
+import timber.log.Timber
+import java.util.*
 
 @Composable
 fun DialogScreen(onBack: () -> Unit) {
@@ -137,6 +141,28 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
             },
             shape = RoundedCornerShape(16.dp)
         )
+        DialogType.DATE_PICKER -> {
+            val activity = LocalContext.current as AppCompatActivity
+            val picker = MaterialDatePicker.Builder.datePicker().build()
+            picker.show(activity.supportFragmentManager, "time_picker")
+            picker.addOnPositiveButtonClickListener {
+                Timber.i(Date(it).toString())
+            }
+            picker.addOnDismissListener {
+                onDismiss()
+            }
+        }
+        DialogType.TIME_PICKER -> {
+            val activity = LocalContext.current as AppCompatActivity
+            val picker = MaterialTimePicker.Builder().setTimeFormat(TimeFormat.CLOCK_24H).build()
+            picker.show(activity.supportFragmentManager, "time_picker")
+            picker.addOnPositiveButtonClickListener {
+                Timber.i("${picker.hour}:${picker.minute}")
+            }
+            picker.addOnDismissListener {
+                onDismiss()
+            }
+        }
     }
 }
 
@@ -167,7 +193,8 @@ fun DialogsOptionList() {
         )
         for (item in dialogTypes) {
             Button(
-                onClick = { dialogState = DialogState(true, item.first) }, modifier = Modifier
+                onClick = { dialogState = DialogState(true, item.first) },
+                modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp)
             ) {

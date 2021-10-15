@@ -1,7 +1,7 @@
 package com.chuntian.buildsrc.dependencies
 
 object Versions {
-    const val compose = "1.0.2"
+    const val compose = "1.0.3"
     const val lifecycleViewModelCompose = "1.0.0-alpha07"
     const val activityCompose = "1.3.0"
     const val pagingCompose = "1.0.0-alpha12"
@@ -33,4 +33,5 @@ object Versions {
     const val androidXJunit = "1.1.2"
     const val desugar = "1.1.5"
     const val dialogs = "0.6.0"
+    const val timber = "5.0.1"
 }

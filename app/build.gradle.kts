@@ -53,6 +53,17 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    bundle {
+        density{
+            enableSplit = true
+        }
+        language{
+            enableSplit = true
+        }
+        abi {
+            enableSplit = true
+        }
+    }
 
     testOptions{
         unitTests.all {

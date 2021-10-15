@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -22,6 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.chuntian.composecookbookcopy.theme.AppThemeState
 import com.chuntian.composecookbookcopy.theme.SystemUIController
 import com.chuntian.composecookbookcopy.ui.home.HomeScreen
+import com.chuntian.composecookbookcopy.utils.LocalNavControl
 import com.chuntian.composecookbookcopy.utils.LocalThemeState
 import com.chuntian.composecookbookcopy.utils.RotateIcon
 import com.chuntian.composecookbookcopy.utils.TestTags
@@ -29,7 +31,7 @@ import com.chuntian.theme.*
 import com.guru.fontawesomecomposelib.FaIcon
 import com.guru.fontawesomecomposelib.FaIconType
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
     @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,7 +98,6 @@ fun BottomNavigationContent(
             false
         ),
     )
-
     BottomNavigation(modifier = modifier) {
         for (item in list) {
             BottomNavigationItem(

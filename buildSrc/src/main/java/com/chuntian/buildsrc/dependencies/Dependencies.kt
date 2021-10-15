@@ -73,4 +73,5 @@ object Dependencies {
     const val kotlinJunit5 = "org.jetbrains.kotlin:kotlin-test-junit5:${Versions.kotlin}"
     const val kotlinTest = "org.jetbrains.kotlin:kotlin-test:${Versions.kotlin}"
     const val androidXJunit = "androidx.test.ext:junit:${Versions.androidXJunit}"
+    const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 }
