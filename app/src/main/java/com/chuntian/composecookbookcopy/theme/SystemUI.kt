@@ -16,18 +16,16 @@ class SystemUIController(private val window: Window) {
         transformColorForLightContent: (Color) -> Color = BlackScrimmed
     ) {
         val statusBarColor = when {
-            darkIcons && Build.VERSION.SDK_INT < 23 -> transformColorForLightContent(color)
+            darkIcons -> transformColorForLightContent(color)
             else -> color
         }
         window.statusBarColor = statusBarColor.toArgb()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (darkIcons) {
-                window.decorView.systemUiVisibility =
-                    window.decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-            } else {
-                window.decorView.systemUiVisibility =
-                    window.decorView.systemUiVisibility and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-            }
+        if (darkIcons) {
+            window.decorView.systemUiVisibility =
+                window.decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        } else {
+            window.decorView.systemUiVisibility =
+                window.decorView.systemUiVisibility and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         }
     }
 
@@ -38,7 +36,9 @@ class SystemUIController(private val window: Window) {
     ) {
         val navBarColor = when {
 //            Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q -> Color.Transparent
-            darkIcons && Build.VERSION.SDK_INT < Build.VERSION_CODES.O -> transformColorForLightContent(color)
+            darkIcons && Build.VERSION.SDK_INT < Build.VERSION_CODES.O -> transformColorForLightContent(
+                color
+            )
             else -> transformColorForLightContent(color)
         }
         window.navigationBarColor = navBarColor.toArgb()
@@ -57,7 +57,7 @@ class SystemUIController(private val window: Window) {
         color: Color,
         darkIcons: Boolean = color.luminance() > 0.5f,
         transformColorForLightContent: (Color) -> Color = BlackScrimmed
-    ){
+    ) {
         setStatusBarColor(color, darkIcons, transformColorForLightContent)
         setNavigationBarColor(color, darkIcons, transformColorForLightContent)
     }

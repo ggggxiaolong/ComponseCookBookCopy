@@ -6,10 +6,10 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.MutableState
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
 import com.chuntian.composecookbookcopy.theme.AppThemeState
 import com.chuntian.composecookbookcopy.ui.home.dialogs.DialogScreen
+import com.chuntian.composecookbookcopy.ui.home.modifiers.ModifiersScreen
 import com.chuntian.composecookbookcopy.ui.home.list.ListScreen
 import com.chuntian.composecookbookcopy.ui.home.list.ListViewType
 import com.chuntian.composecookbookcopy.ui.home.root.HomeRoot
@@ -28,9 +28,13 @@ fun HomeScreen(appThemeState: MutableState<AppThemeState>) {
             }
             composable(PATH_LIST) {
                 ListScreen(
-                    type = it.arguments?.getString("type")?.uppercase() ?: ListViewType.VERTICAL.name,
+                    type = it.arguments?.getString("type")?.uppercase()
+                        ?: ListViewType.VERTICAL.name,
                     onBack = onBack
                 )
+            }
+            composable(PATH_MODIFIER) {
+                ModifiersScreen(onBack = onBack)
             }
         }
     }
@@ -41,3 +45,4 @@ const val PATH_HOME = "/home"
 const val PATH_DIALOGS = "/home/dialog"
 const val PATH_LIST = "/home/list/{type}"
 const val PATH_LIST_PREFIX = "/home/list/"
+const val PATH_MODIFIER = "/home/modifiers"
