@@ -16,6 +16,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.chuntian.composecookbookcopy.ui.home.HomeScaffold
 import com.chuntian.data.DemoDataProvider
 import com.chuntian.theme.ComposeCookBookCopyTheme
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -26,18 +27,7 @@ import java.util.*
 
 @Composable
 fun DialogScreen(onBack: () -> Unit) {
-    Scaffold(topBar = {
-        TopAppBar(
-            title = { Text(text = "Dialogs") },
-            elevation = 8.dp,
-            navigationIcon = {
-                IconButton(onClick = onBack) {
-                    Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null)
-                }
-            })
-    }, content = {
-        DialogsOptionList()
-    })
+    HomeScaffold(title = "Dialogs", onBack = onBack) { DialogsOptionList() }
 }
 
 @Composable

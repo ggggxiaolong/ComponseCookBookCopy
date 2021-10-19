@@ -1,6 +1,6 @@
 package com.chuntian.data.model
 
-import java.util.*
+import com.chuntian.data.PATH
 
 sealed class HomeScreenItems {
     object Dialogs : HomeScreenItems()
@@ -21,9 +21,9 @@ sealed class HomeScreenItems {
 
     val name: String
         get() = when(this) {
-            is Dialogs -> "Dialogs"
-            is TabLayout -> "TabLayout"
-            is Carousel -> "Carousel"
+            Dialogs -> "Dialogs"
+            TabLayout -> "TabLayout"
+            Carousel -> "Carousel"
             is ListView -> "$type ListView"
             ConstrainsLayout -> "Constraint Layout"
             MotionLayout -> "Motion Layout"
@@ -36,5 +36,24 @@ sealed class HomeScreenItems {
             AdvanceLists -> "Advance List"
             PullRefresh -> "Pull refresh demos"
             CustomFling -> "Custom Fling"
+        }
+
+    val path : String
+        get() = when(this){
+            Dialogs -> PATH.HOME_DIALOGS
+            TabLayout -> PATH.HOME_TAB_LAYOUT
+            Carousel -> PATH.HOME_CAROUSEL
+            is ListView -> PATH.HOME_LIST.replace("{type}", type)
+            ConstrainsLayout -> PATH.HOME_CONSTRAINS_LAYOUT
+            MotionLayout -> PATH.HOME_MOTION_LAYOUT
+            CollapsingAppBar -> PATH.HOME_COLLAPSING_APPBAR
+            BottomAppBar -> PATH.HOME_BOTTOM_APPBAR
+            BottomSheets -> PATH.HOME_BOTTOM_SHEETS
+            Layouts -> PATH.HOME_LAYOUTS
+            Modifiers -> PATH.HOME_MODIFIER
+            AndroidView -> PATH.HOME_ANDROID_VIEW
+            AdvanceLists -> PATH.HOME_ADVANCE_LISTS
+            PullRefresh -> PATH.HOME_PULL_REFRESH_DEMOS
+            CustomFling -> PATH.HOME_CUSTOM_FLING
         }
 }

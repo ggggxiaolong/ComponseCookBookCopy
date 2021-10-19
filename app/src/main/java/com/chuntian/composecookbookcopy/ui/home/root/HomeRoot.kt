@@ -27,15 +27,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.chuntian.composecookbookcopy.theme.AppThemeState
-import com.chuntian.composecookbookcopy.ui.home.PATH_DIALOGS
-import com.chuntian.composecookbookcopy.ui.home.PATH_LIST_PREFIX
-import com.chuntian.composecookbookcopy.ui.home.PATH_MODIFIER
 import com.chuntian.composecookbookcopy.utils.LocalNavControl
 import com.chuntian.composecookbookcopy.utils.TestTags
 import com.chuntian.data.DemoDataProvider
+import com.chuntian.data.PATH
 import com.chuntian.data.model.HomeScreenItems
 import com.chuntian.theme.*
 import com.chuntian.theme.R
+import java.lang.IllegalArgumentException
 
 @ExperimentalFoundationApi
 @Composable
@@ -77,12 +76,10 @@ fun HomeRoot(appThemeState: MutableState<AppThemeState>) {
 
 
 fun homeRootItemClicked(homeScreenItems: HomeScreenItems, controller: NavController) {
-    //todo
-    when (homeScreenItems) {
-        is HomeScreenItems.ListView -> controller.navigate(PATH_LIST_PREFIX + homeScreenItems.type)
-        HomeScreenItems.Dialogs -> controller.navigate(PATH_DIALOGS)
-        HomeScreenItems.Modifiers -> controller.navigate(PATH_MODIFIER)
-        else -> controller.navigate(PATH_DIALOGS)
+    try {
+        controller.navigate(homeScreenItems.path)
+    }catch (e: IllegalArgumentException){
+        controller.navigate(PATH.CODING)
     }
 }
 

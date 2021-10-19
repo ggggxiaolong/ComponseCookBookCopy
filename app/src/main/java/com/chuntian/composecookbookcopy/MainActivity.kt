@@ -14,6 +14,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.*
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
@@ -32,6 +33,7 @@ import com.guru.fontawesomecomposelib.FaIcon
 import com.guru.fontawesomecomposelib.FaIconType
 
 class MainActivity : AppCompatActivity() {
+    @ExperimentalComposeUiApi
     @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -129,6 +131,7 @@ fun BottomNavigationContent(
     }
 }
 
+@ExperimentalComposeUiApi
 @ExperimentalFoundationApi
 @Composable
 fun HomeScreenContent(
@@ -151,6 +154,7 @@ fun HomeScreenContent(
     }
 }
 
+@ExperimentalComposeUiApi
 @ExperimentalFoundationApi
 @Composable
 fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
@@ -187,6 +191,7 @@ fun BaseView(
     }
 }
 
+@ExperimentalComposeUiApi
 @ExperimentalAnimationApi
 @ExperimentalFoundationApi
 @ExperimentalMaterialApi

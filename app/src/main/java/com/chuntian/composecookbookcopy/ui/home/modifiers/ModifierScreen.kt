@@ -24,7 +24,10 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.pointerInteropFilter
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.chuntian.composecookbookcopy.ui.home.HomeScaffold
+import com.chuntian.theme.ComposeCookBookCopyTheme
 import com.chuntian.theme.Green500
 import com.chuntian.theme.Teal200
 import com.chuntian.theme.TiktokRed
@@ -32,18 +35,7 @@ import com.chuntian.theme.TiktokRed
 @ExperimentalComposeUiApi
 @Composable
 fun ModifiersScreen(onBack: () -> Unit) {
-    Scaffold(topBar = {
-        TopAppBar(title = { Text(text = "Modifiers") }, elevation = 8.dp, navigationIcon = {
-            IconButton(
-                onClick = onBack
-            ) {
-                Icon(
-                    imageVector = Icons.Filled.ArrowBack,
-                    contentDescription = null
-                )
-            }
-        })
-    }, content = { ModifiersView() })
+    HomeScaffold(title = "Modifiers", onBack = onBack) { ModifiersView() }
 }
 
 @ExperimentalComposeUiApi
@@ -202,4 +194,15 @@ fun DemoElementButton(modifier: Modifier) {
 @Composable
 fun DemoElementText(modifier: Modifier) {
     Text(text = "Basic Text", modifier = modifier)
+}
+
+@ExperimentalComposeUiApi
+@Preview
+@Composable
+fun PreviewModifier() {
+    ComposeCookBookCopyTheme() {
+        ModifiersScreen {
+
+        }
+    }
 }

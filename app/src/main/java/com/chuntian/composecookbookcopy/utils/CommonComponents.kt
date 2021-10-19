@@ -2,11 +2,12 @@ package com.chuntian.composecookbookcopy.utils
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -74,4 +75,27 @@ fun RotateIcon(
             )
 
     )
+}
+
+@Composable
+fun CodingScreen(onBack: () -> Unit) {
+    Scaffold(topBar = {
+        TopAppBar(title = { Text(text = "Coding..") }, navigationIcon = {
+            IconButton(onClick = onBack) {
+                Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = null)
+            }
+        })
+    }, content = {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight()
+        ) {
+            Text(
+                text = "Coding..", style = MaterialTheme.typography.h3, modifier = Modifier.align(
+                    Alignment.Center
+                )
+            )
+        }
+    })
 }

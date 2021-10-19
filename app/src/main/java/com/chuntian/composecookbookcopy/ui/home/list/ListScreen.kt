@@ -8,7 +8,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.unit.dp
+import com.chuntian.composecookbookcopy.ui.home.HomeScaffold
 import com.chuntian.data.DemoDataProvider
 import timber.log.Timber
 
@@ -16,41 +18,22 @@ import timber.log.Timber
 @ExperimentalFoundationApi
 @Composable
 fun ListScreen(type: String, onBack: () -> Unit) {
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Column(modifier = Modifier.padding(4.dp)) {
-                        Text(text = "List")
-                        Text(text = type.lowercase(), style = MaterialTheme.typography.body2)
-                    }
-                },
-                elevation = 8.dp,
-                navigationIcon = {
-                    IconButton(
-                        onClick = onBack
-                    ) {
-                        Icon(Icons.Filled.ArrowBack, contentDescription = null)
-                    }
-                })
-        },
-        content = {
-            Timber.i(type)
-            when (type) {
-                ListViewType.VERTICAL.name -> {
-                    VerticalListView()
-                }
-                ListViewType.HORIZONTAL.name -> {
-                    HorizontalListView()
-                }
-                ListViewType.GRID.name -> {
-                    GridListItemView()
-                }
-                ListViewType.MIX.name -> {
-                }
+    HomeScaffold(title = type.lowercase().capitalize() + " List", onBack = onBack) {
+        Timber.i(type)
+        when (type) {
+            ListViewType.VERTICAL.name -> {
+                VerticalListView()
+            }
+            ListViewType.HORIZONTAL.name -> {
+                HorizontalListView()
+            }
+            ListViewType.GRID.name -> {
+                GridListItemView()
+            }
+            ListViewType.MIX.name -> {
             }
         }
-    )
+    }
 }
 
 @Composable
@@ -102,7 +85,10 @@ fun HorizontalListView() {
 @Composable
 fun GridListItemView() {
     val list = DemoDataProvider.itemList
-    LazyVerticalGrid(cells = GridCells.Fixed(count = 2), contentPadding = PaddingValues(start = 4.dp, end = 4.dp)) {
+    LazyVerticalGrid(
+        cells = GridCells.Fixed(count = 2),
+        contentPadding = PaddingValues(start = 4.dp, end = 4.dp)
+    ) {
         items(list) {
             GridListItem(item = it)
         }
