@@ -14,6 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.chuntian.composecookbookcopy.theme.AppThemeState
+import com.chuntian.composecookbookcopy.ui.home.constrainLayout.ConstrainLayoutScreen
 import com.chuntian.composecookbookcopy.ui.home.dialogs.DialogScreen
 import com.chuntian.composecookbookcopy.ui.home.layout.LayoutScreen
 import com.chuntian.composecookbookcopy.ui.home.list.ListScreen
@@ -51,6 +52,9 @@ fun HomeScreen(appThemeState: MutableState<AppThemeState>) {
             }
             composable(PATH.CODING) {
                 CodingScreen(onBack)
+            }
+            composable(PATH.HOME_CONSTRAINS_LAYOUT){
+                ConstrainLayoutScreen(onBack)
             }
         }
     }
