@@ -20,6 +20,7 @@ import com.chuntian.composecookbookcopy.ui.home.layout.LayoutScreen
 import com.chuntian.composecookbookcopy.ui.home.list.ListScreen
 import com.chuntian.composecookbookcopy.ui.home.list.ListViewType
 import com.chuntian.composecookbookcopy.ui.home.modifiers.ModifiersScreen
+import com.chuntian.composecookbookcopy.ui.home.motionLayout.MotionLayoutScree
 import com.chuntian.composecookbookcopy.ui.home.root.HomeRoot
 import com.chuntian.composecookbookcopy.utils.CodingScreen
 import com.chuntian.composecookbookcopy.utils.LocalNavControl
@@ -55,6 +56,9 @@ fun HomeScreen(appThemeState: MutableState<AppThemeState>) {
             }
             composable(PATH.HOME_CONSTRAINS_LAYOUT){
                 ConstrainLayoutScreen(onBack)
+            }
+            composable(PATH.HOME_MOTION_LAYOUT){
+                MotionLayoutScree(onBack = onBack)
             }
         }
     }
