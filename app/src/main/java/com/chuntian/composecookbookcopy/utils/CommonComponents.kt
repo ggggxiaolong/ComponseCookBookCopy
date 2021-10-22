@@ -7,6 +7,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
@@ -14,6 +15,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.rememberLottieComposition
 import com.guru.fontawesomecomposelib.FaIcon
 
 @Composable
@@ -86,15 +90,16 @@ fun CodingScreen(onBack: () -> Unit) {
             }
         })
     }, content = {
-        Box(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight()
         ) {
+            val composition by rememberLottieComposition(spec = LottieCompositionSpec.Asset("working.json"))
+            LottieAnimation(composition = composition, modifier = Modifier.height(300.dp))
             Text(
-                text = "Coding..", style = MaterialTheme.typography.h3, modifier = Modifier.align(
-                    Alignment.Center
-                )
+                text = "work in progress",
+                style = MaterialTheme.typography.body1,
+                modifier = Modifier.align(Alignment.CenterHorizontally)
             )
         }
     })

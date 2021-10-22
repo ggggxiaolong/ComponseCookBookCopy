@@ -87,6 +87,7 @@ dependencies {
     addGoogleAndroidDependencies()
     addNetworkingDependencies()
     addKotlinTestDependencies()
+    addAccompanist()
     addJunit5TestDependencies()
     addThirdPartyUnitTestsDependencies()
     addAndroidInstrumentationTestsDependencies()

@@ -15,4 +15,7 @@
     <color name="orange_200">#FFff7961</color>
     <color name="orange_500">#FFf44336</color>
     <color name="orange_700">#FFba000d</color>
+    <color name="purple">#FF833AB4</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
 </resources>

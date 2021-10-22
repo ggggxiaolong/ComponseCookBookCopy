@@ -2,7 +2,6 @@ package com.chuntian.composecookbookcopy
 
 import FaIcons
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
@@ -22,13 +21,12 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import com.chuntian.composecookbookcopy.theme.AppThemeState
-import com.chuntian.composecookbookcopy.theme.SystemUIController
 import com.chuntian.composecookbookcopy.ui.home.HomeScreen
-import com.chuntian.composecookbookcopy.utils.LocalNavControl
 import com.chuntian.composecookbookcopy.utils.LocalThemeState
 import com.chuntian.composecookbookcopy.utils.RotateIcon
 import com.chuntian.composecookbookcopy.utils.TestTags
 import com.chuntian.theme.*
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.guru.fontawesomecomposelib.FaIcon
 import com.guru.fontawesomecomposelib.FaIconType
 
@@ -38,10 +36,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val systemUIController = remember { SystemUIController(window) }
             val appTheme = remember { mutableStateOf(AppThemeState()) }
             CompositionLocalProvider(LocalThemeState provides appTheme.value) {
-                BaseView(appThemeState = appTheme.value, systemUIController = systemUIController) {
+                BaseView(appThemeState = appTheme.value) {
                     MainAppContent(appThemeState = appTheme)
                 }
             }
@@ -173,7 +170,6 @@ fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
 @Composable
 fun BaseView(
     appThemeState: AppThemeState,
-    systemUIController: SystemUIController?,
     content: @Composable () -> Unit
 ) {
     val color = when (appThemeState.pallet) {
@@ -182,7 +178,8 @@ fun BaseView(
         ColorPallet.ORANGE -> Orange700
         ColorPallet.GREEN -> Green700
     }
-    systemUIController?.setSystemBarsColor(color, appThemeState.darkTheme)
+    val systemUiController = rememberSystemUiController()
+    systemUiController.setSystemBarsColor(color, appThemeState.darkTheme)
     ComposeCookBookCopyTheme(
         darkTheme = appThemeState.darkTheme,
         colorPallet = appThemeState.pallet
@@ -199,7 +196,7 @@ fun BaseView(
 @Composable
 fun DefaultPreview() {
     val appThemeState = remember { mutableStateOf(AppThemeState(false, ColorPallet.GREEN)) }
-    BaseView(appThemeState.value, null) {
+    BaseView(appThemeState.value) {
         MainAppContent(appThemeState)
     }
 }

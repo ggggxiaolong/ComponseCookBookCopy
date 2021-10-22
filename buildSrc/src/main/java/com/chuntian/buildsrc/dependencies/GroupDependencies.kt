@@ -94,3 +94,17 @@ internal val thirdPartyUiDependencies = listOf(
 //    Dependencies.dialogsCore,
 //    Dependencies.dialogsDatePicker
 )
+
+internal val accompanist = listOf(
+    Dependencies.composeInsets,
+    Dependencies.composeSystemUiController,
+    Dependencies.composePager,
+    Dependencies.composePagerIndicator,
+    Dependencies.composePermission,
+    Dependencies.composePlaceholder,
+    Dependencies.composeFlowlayout,
+    Dependencies.composeNavigationAnimation,
+    Dependencies.composeNavigationMaterial,
+    Dependencies.composeDrawablePainer,
+    Dependencies.composeSwipeRefresh,
+)

@@ -98,3 +98,9 @@ fun DependencyHandler.addThirdPartyUiDependencies() {
 fun DependencyHandler.addDesugarDependencies(){
     add("coreLibraryDesugaring", Dependencies.desugar)
 }
+
+fun DependencyHandler.addAccompanist(){
+    accompanist.forEach {
+        add("implementation", it)
+    }
+}
