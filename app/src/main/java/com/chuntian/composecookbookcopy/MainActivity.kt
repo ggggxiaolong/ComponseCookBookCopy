@@ -26,11 +26,15 @@ import com.chuntian.composecookbookcopy.utils.LocalThemeState
 import com.chuntian.composecookbookcopy.utils.RotateIcon
 import com.chuntian.composecookbookcopy.utils.TestTags
 import com.chuntian.theme.*
+import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.guru.fontawesomecomposelib.FaIcon
 import com.guru.fontawesomecomposelib.FaIconType
 
 class MainActivity : AppCompatActivity() {
+    @ExperimentalMaterialApi
+    @ExperimentalAnimationApi
+    @ExperimentalPagerApi
     @ExperimentalComposeUiApi
     @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -128,6 +132,9 @@ fun BottomNavigationContent(
     }
 }
 
+@ExperimentalMaterialApi
+@ExperimentalAnimationApi
+@ExperimentalPagerApi
 @ExperimentalComposeUiApi
 @ExperimentalFoundationApi
 @Composable
@@ -151,6 +158,9 @@ fun HomeScreenContent(
     }
 }
 
+@ExperimentalMaterialApi
+@ExperimentalAnimationApi
+@ExperimentalPagerApi
 @ExperimentalComposeUiApi
 @ExperimentalFoundationApi
 @Composable
@@ -188,6 +198,7 @@ fun BaseView(
     }
 }
 
+@ExperimentalPagerApi
 @ExperimentalComposeUiApi
 @ExperimentalAnimationApi
 @ExperimentalFoundationApi

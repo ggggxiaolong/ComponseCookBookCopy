@@ -25,7 +25,15 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isDebuggable = false
+            isShrinkResources = true
+//            postprocessing {
+//                isRemoveUnusedCode = true
+//                isRemoveUnusedResources = true
+//                isObfuscate = true
+//                isOptimizeCode = true
+//            }
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
@@ -75,6 +83,7 @@ android {
 dependencies {
     implementation(project(":data"))
     implementation(project(":theme"))
+    implementation(project(":demo:youtube"))
     addDesugarDependencies()
     addKotlinDependencies()
     addDataDependencies()

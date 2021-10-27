@@ -32,3 +32,4 @@ rootProject.name = "ComposeCookBookCopy"
 include ':app'
 include ':data'
 include ':theme'
+include ':demo:youtube'

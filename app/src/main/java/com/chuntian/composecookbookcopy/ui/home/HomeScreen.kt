@@ -1,5 +1,6 @@
 package com.chuntian.composecookbookcopy.ui.home
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material.*
@@ -14,6 +15,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.chuntian.composecookbookcopy.theme.AppThemeState
+import com.chuntian.composecookbookcopy.ui.home.advancelists.AdvanceListScreen
 import com.chuntian.composecookbookcopy.ui.home.constrainLayout.ConstrainLayoutScreen
 import com.chuntian.composecookbookcopy.ui.home.dialogs.DialogScreen
 import com.chuntian.composecookbookcopy.ui.home.layout.LayoutScreen
@@ -25,7 +27,11 @@ import com.chuntian.composecookbookcopy.ui.home.root.HomeRoot
 import com.chuntian.composecookbookcopy.utils.CodingScreen
 import com.chuntian.composecookbookcopy.utils.LocalNavControl
 import com.chuntian.data.PATH
+import com.google.accompanist.pager.ExperimentalPagerApi
 
+@ExperimentalAnimationApi
+@ExperimentalMaterialApi
+@ExperimentalPagerApi
 @ExperimentalComposeUiApi
 @ExperimentalFoundationApi
 @Composable
@@ -59,6 +65,9 @@ fun HomeScreen(appThemeState: MutableState<AppThemeState>) {
             }
             composable(PATH.HOME_MOTION_LAYOUT){
                 MotionLayoutScree(onBack = onBack)
+            }
+            composable(PATH.HOME_ADVANCE_LISTS){
+                AdvanceListScreen(onBack = onBack)
             }
         }
     }
