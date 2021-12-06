@@ -18,4 +18,5 @@ object PATH {
     const val HOME_ADVANCE_LISTS = "/home/advanceLists"
     const val HOME_PULL_REFRESH_DEMOS = "/home/pullRefreshDemos"
     const val HOME_CUSTOM_FLING = "/home/customFling"
+    const val HOME_RENDER_SCRIPT = "/home/renderScript"
 }

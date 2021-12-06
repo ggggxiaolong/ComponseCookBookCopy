@@ -1,5 +1,6 @@
 import com.chuntian.buildsrc.configurations.ProjectConfigs
 import com.chuntian.buildsrc.dependencies.*
+import org.jetbrains.kotlin.gradle.targets.js.npm.includedRange
 
 plugins {
     id("com.android.application")
@@ -28,12 +29,6 @@ android {
             isMinifyEnabled = true
             isDebuggable = false
             isShrinkResources = true
-//            postprocessing {
-//                isRemoveUnusedCode = true
-//                isRemoveUnusedResources = true
-//                isObfuscate = true
-//                isOptimizeCode = true
-//            }
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
@@ -84,6 +79,8 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":theme"))
     implementation(project(":demo:youtube"))
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar"))))
+//    implementation("com.mrtan.renderscript-toolkit:renderscript-toolkit:1.0")
     addDesugarDependencies()
     addKotlinDependencies()
     addDataDependencies()

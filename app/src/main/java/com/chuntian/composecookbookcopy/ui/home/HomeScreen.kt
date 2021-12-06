@@ -14,8 +14,10 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import coil.annotation.ExperimentalCoilApi
 import com.chuntian.composecookbookcopy.theme.AppThemeState
 import com.chuntian.composecookbookcopy.ui.home.advancelists.AdvanceListScreen
+import com.chuntian.composecookbookcopy.ui.home.carousel.CarouselScreen
 import com.chuntian.composecookbookcopy.ui.home.constrainLayout.ConstrainLayoutScreen
 import com.chuntian.composecookbookcopy.ui.home.dialogs.DialogScreen
 import com.chuntian.composecookbookcopy.ui.home.layout.LayoutScreen
@@ -23,12 +25,14 @@ import com.chuntian.composecookbookcopy.ui.home.list.ListScreen
 import com.chuntian.composecookbookcopy.ui.home.list.ListViewType
 import com.chuntian.composecookbookcopy.ui.home.modifiers.ModifiersScreen
 import com.chuntian.composecookbookcopy.ui.home.motionLayout.MotionLayoutScree
+import com.chuntian.composecookbookcopy.ui.home.renderScript.RenderScriptScreen
 import com.chuntian.composecookbookcopy.ui.home.root.HomeRoot
 import com.chuntian.composecookbookcopy.utils.CodingScreen
 import com.chuntian.composecookbookcopy.utils.LocalNavControl
 import com.chuntian.data.PATH
 import com.google.accompanist.pager.ExperimentalPagerApi
 
+@OptIn(ExperimentalCoilApi::class)
 @ExperimentalAnimationApi
 @ExperimentalMaterialApi
 @ExperimentalPagerApi
@@ -68,6 +72,12 @@ fun HomeScreen(appThemeState: MutableState<AppThemeState>) {
             }
             composable(PATH.HOME_ADVANCE_LISTS){
                 AdvanceListScreen(onBack = onBack)
+            }
+            composable(PATH.HOME_CAROUSEL){
+                CarouselScreen (onBack = onBack)
+            }
+            composable(PATH.HOME_RENDER_SCRIPT){
+                RenderScriptScreen (onBack = onBack)
             }
         }
     }

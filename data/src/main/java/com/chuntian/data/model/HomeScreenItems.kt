@@ -18,12 +18,14 @@ sealed class HomeScreenItems {
     object PullRefresh : HomeScreenItems()
     object CustomFling : HomeScreenItems()
     object MotionLayout : HomeScreenItems()
+    object RenderScript : HomeScreenItems()
 
     val name: String
         get() = when(this) {
             Dialogs -> "Dialogs"
             TabLayout -> "TabLayout"
             Carousel -> "Carousel"
+            RenderScript -> "RenderScript"
             is ListView -> "$type ListView"
             ConstrainsLayout -> "Constraint Layout"
             MotionLayout -> "Motion Layout"
@@ -55,5 +57,6 @@ sealed class HomeScreenItems {
             AdvanceLists -> PATH.HOME_ADVANCE_LISTS
             PullRefresh -> PATH.HOME_PULL_REFRESH_DEMOS
             CustomFling -> PATH.HOME_CUSTOM_FLING
+            RenderScript -> PATH.HOME_RENDER_SCRIPT
         }
 }

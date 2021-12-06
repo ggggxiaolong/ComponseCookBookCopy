@@ -32,11 +32,12 @@ import com.guru.fontawesomecomposelib.FaIcon
 import com.guru.fontawesomecomposelib.FaIconType
 
 class MainActivity : AppCompatActivity() {
-    @ExperimentalMaterialApi
-    @ExperimentalAnimationApi
-    @ExperimentalPagerApi
-    @ExperimentalComposeUiApi
-    @ExperimentalFoundationApi
+    @OptIn(ExperimentalMaterialApi::class,
+        ExperimentalAnimationApi::class,
+        ExperimentalPagerApi::class,
+        ExperimentalComposeUiApi::class,
+        ExperimentalFoundationApi::class
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

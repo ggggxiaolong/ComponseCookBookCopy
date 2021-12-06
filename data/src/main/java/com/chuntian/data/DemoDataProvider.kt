@@ -329,6 +329,7 @@ object DemoDataProvider {
         HomeScreenItems.ListView("Grid"),
         HomeScreenItems.Modifiers,
         HomeScreenItems.Layouts,
+        HomeScreenItems.RenderScript,
         HomeScreenItems.ConstrainsLayout,
         HomeScreenItems.MotionLayout,
         HomeScreenItems.AdvanceLists,
