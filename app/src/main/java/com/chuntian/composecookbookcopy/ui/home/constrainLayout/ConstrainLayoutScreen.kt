@@ -8,8 +8,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
@@ -69,7 +69,7 @@ fun ConstrainLayoutListItems() {
 
         Text(
             text = item.title,
-            style = MaterialTheme.typography.body1,
+            style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.constrainAs(title) {
                 linkTo(
                     start = image.end,
@@ -88,12 +88,12 @@ fun ConstrainLayoutListItems() {
             Icon(
                 imageVector = if (isSelect.value) Icons.Filled.Favorite else Icons.Default.FavoriteBorder,
                 contentDescription = null,
-                tint = MaterialTheme.colors.primary
+                tint = MaterialTheme.colorScheme.primary
             )
         }
         Text(
             text = item.subtitle,
-            style = MaterialTheme.typography.body1,
+            style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.constrainAs(subtitle) {
                 linkTo(start = title.start, end = parent.end)
                 width = Dimension.fillToConstraints
@@ -105,7 +105,7 @@ fun ConstrainLayoutListItems() {
             })
         Text(
             text = item.source,
-            style = MaterialTheme.typography.caption,
+            style = MaterialTheme.typography.bodySmall,
             modifier = Modifier.constrainAs(source) {
                 start.linkTo(title.start)
                 width = Dimension.fillToConstraints
@@ -137,7 +137,7 @@ fun ConstrainLayoutBigListItem() {
                 })
         Text(
             text = item.title,
-            style = MaterialTheme.typography.h6,
+            style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.constrainAs(title) {
                 linkTo(
                     start = parent.start,
@@ -150,7 +150,7 @@ fun ConstrainLayoutBigListItem() {
             })
         Text(
             text = item.subtitle,
-            style = MaterialTheme.typography.body1,
+            style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.constrainAs(subtitle) {
                 linkTo(start = title.start, end = title.end)
                 linkTo(top = title.bottom, topMargin = 8.dp, bottom = parent.bottom, bottomMargin = 16.dp)
@@ -165,7 +165,7 @@ fun ConstrainLayoutBigListItem() {
             Icon(
                 imageVector = if (isSelect.value) Icons.Filled.Favorite else Icons.Default.FavoriteBorder,
                 contentDescription = null,
-                tint = MaterialTheme.colors.primary
+                tint = MaterialTheme.colorScheme.primary
             )
         }
     }

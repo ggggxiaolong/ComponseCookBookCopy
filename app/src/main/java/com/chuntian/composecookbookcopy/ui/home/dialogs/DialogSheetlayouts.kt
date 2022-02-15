@@ -3,7 +3,11 @@ package com.chuntian.composecookbookcopy.ui.home.dialogs
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.material.BottomSheetScaffoldState
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ModalBottomSheetLayout
+import androidx.compose.material.ModalBottomSheetState
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.List
@@ -18,6 +22,7 @@ import androidx.compose.ui.unit.sp
 import com.chuntian.data.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import androidx.compose.material3.MaterialTheme
 
 @Composable
 fun DrawerContent() {
@@ -40,7 +45,7 @@ fun BottomSheetContent() {
 
 @Composable
 fun PlayerBottomSheet() {
-    val backgroundColor = MaterialTheme.colors.background.copy(alpha = 0.7f)
+    val backgroundColor = MaterialTheme.colorScheme.background.copy(alpha = 0.7f)
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -55,7 +60,7 @@ fun PlayerBottomSheet() {
         )
         Text(
             text = "Some Like you by Adele",
-            style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),
+            style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp),
             modifier = Modifier
                 .padding(8.dp)
                 .weight(1f)
@@ -71,7 +76,7 @@ fun PlayerBottomSheet() {
             modifier = Modifier.padding(16.dp)
         )
     }
-    Text(text = "Lyrics", style = MaterialTheme.typography.h6, modifier = Modifier.padding(16.dp))
+    Text(text = "Lyrics", style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(16.dp))
     Text(
         text = "I headr that you're settled down\n" + "That you found a girl and you're married now\n" +
                 "I heard that your dreams came true\n" +
@@ -86,7 +91,7 @@ fun PlayerBottomSheet() {
     )
 }
 
-@ExperimentalMaterialApi
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 private fun ScaffoldContent(
     coroutineScope: CoroutineScope,

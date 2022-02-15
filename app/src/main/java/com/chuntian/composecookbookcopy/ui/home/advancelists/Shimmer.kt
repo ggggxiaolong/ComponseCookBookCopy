@@ -9,7 +9,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -34,7 +34,7 @@ fun ShimmerView() {
 
     @Composable
     fun buttonColors(type: ShimmerAnimationType) = ButtonDefaults.buttonColors(
-        backgroundColor = if (type == animateType.value) MaterialTheme.colors.primary else Color.LightGray
+        backgroundColor = if (type == animateType.value) MaterialTheme.colorScheme.primary else Color.LightGray
     )
 
     Column(

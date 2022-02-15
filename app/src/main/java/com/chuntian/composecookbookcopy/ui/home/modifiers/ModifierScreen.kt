@@ -2,7 +2,6 @@ package com.chuntian.composecookbookcopy.ui.home.modifiers
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -10,9 +9,9 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -30,7 +29,6 @@ import com.chuntian.composecookbookcopy.ui.home.HomeScaffold
 import com.chuntian.theme.ComposeCookBookCopyTheme
 import com.chuntian.theme.Green500
 import com.chuntian.theme.Teal200
-import com.chuntian.theme.TiktokRed
 
 @ExperimentalComposeUiApi
 @Composable
@@ -45,7 +43,7 @@ private fun ModifiersView() {
     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
         Text(
             text = "Order in modifier values matters",
-            style = typography.h6,
+            style = typography.titleMedium,
             modifier = Modifier.padding(8.dp)
         )
         DemoText(text = "No Modifiers")
@@ -103,7 +101,7 @@ private fun ModifiersView() {
         DemoElementButton(modifier = Modifier.shadow(12.dp))
 
         DemoText(text = "Modifier.background(MaterialTheme.colors.secondary)")
-        DemoElementText(modifier = Modifier.background(MaterialTheme.colors.secondary))
+        DemoElementText(modifier = Modifier.background(MaterialTheme.colorScheme.secondary))
 
         DemoText(
             text = "Modifier.padding(8.dp).background(\n" +
@@ -179,7 +177,7 @@ private fun ModifiersView() {
 fun DemoText(text: String) {
     Text(
         text = text,
-        style = MaterialTheme.typography.body2.copy(color = Color.Gray),
+        style = MaterialTheme.typography.bodyMedium.copy(color = Color.Gray),
         modifier = Modifier.padding(4.dp)
     )
 }

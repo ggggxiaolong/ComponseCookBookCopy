@@ -4,7 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
@@ -22,6 +22,7 @@ import com.chuntian.theme.ComposeCookBookCopyTheme
 import com.chuntian.theme.Green200
 import com.chuntian.theme.Green500
 import com.chuntian.theme.Green700
+import androidx.compose.material3.MaterialTheme
 
 @Composable
 fun LayoutScreen(onBack: () -> Unit) {
@@ -41,7 +42,7 @@ private fun LayoutView() {
 @Composable
 fun TypesOfRow() {
     val typography = MaterialTheme.typography
-    Title(text = "Rows", style = typography.h6)
+    Title(text = "Rows", style = typography.titleMedium)
     Title(text = "Arrangement.Start")
     MultipleRowTexts(
         horizontalArrangement = Arrangement.Start,
@@ -80,7 +81,7 @@ fun TypesOfRow() {
 }
 
 @Composable
-fun Title(text: String, style: TextStyle = MaterialTheme.typography.caption) {
+fun Title(text: String, style: TextStyle = MaterialTheme.typography.labelMedium) {
     Text(text = text, style = style, modifier = Modifier.padding(8.dp))
 }
 
@@ -100,7 +101,7 @@ fun MultipleRowTexts(testTag: String, horizontalArrangement: Arrangement.Horizon
 
 @Composable
 fun TypeOfColumns() {
-    Title(text = "Column", style = MaterialTheme.typography.h6)
+    Title(text = "Column", style = MaterialTheme.typography.titleMedium)
     Title(text = "Arrangement.Top")
     MultipleColumnTexts(
         testTag = TestTags.HOME_LAYOUTS_COLUMN_TOP,
@@ -154,6 +155,7 @@ fun MultipleColumnTexts(testTag: String, horizontalArrangement: Arrangement.Vert
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TypeOfBox() {
     val boxModifier = Modifier
@@ -161,39 +163,40 @@ fun TypeOfBox() {
         .background(Color.LightGray)
         .fillMaxWidth()
         .height(250.dp)
-    Title(text = "Box", style = MaterialTheme.typography.h6)
+    val elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+    Title(text = "Box", style = MaterialTheme.typography.titleMedium)
     Title(text = "Children with no align")
     Box(modifier = boxModifier.testTag(TestTags.HOME_LAYOUTS_BOX_NO_ALIGN)) {
         Card(
-            backgroundColor = Green700,
-            elevation = 4.dp,
+            containerColor = Green700,
+            elevation = elevation,
             modifier = Modifier.size(200.dp),
             content = {})
         Card(
-            backgroundColor = Green500,
-            elevation = 4.dp,
+            containerColor = Green500,
+            elevation = elevation,
             modifier = Modifier.size(150.dp),
             content = {})
         Card(
-            backgroundColor = Green200,
-            elevation = 4.dp,
+            containerColor = Green200,
+            elevation = elevation,
             modifier = Modifier.size(100.dp),
             content = {})
     }
 
     Title(text = "Children with TopStart, Center BottomEnd")
     Box(modifier = boxModifier.testTag(TestTags.HOME_LAYOUTS_BOX_TOP_CENTER_AND_NO_ALIGN)) {
-        Card(backgroundColor = Green700, elevation = 4.dp, modifier = Modifier
+        Card(containerColor = Green700, elevation = elevation, modifier = Modifier
             .size(200.dp)
             .align(
                 Alignment.TopStart
             ), content = {})
-        Card(backgroundColor = Green500, elevation = 4.dp, modifier = Modifier
+        Card(containerColor = Green500, elevation = elevation, modifier = Modifier
             .size(150.dp)
             .align(
                 Alignment.Center
             ), content = {})
-        Card(backgroundColor = Green200, elevation = 4.dp, modifier = Modifier
+        Card(containerColor = Green200, elevation = elevation, modifier = Modifier
             .size(100.dp)
             .align(
                 Alignment.BottomEnd
@@ -203,7 +206,7 @@ fun TypeOfBox() {
 
 @Composable
 fun ConstrainLayouts() {
-    Title(text = "ConstrainLayouts", style = MaterialTheme.typography.h6)
+    Title(text = "ConstrainLayouts", style = MaterialTheme.typography.titleMedium)
     ConstraintLayout(
         modifier = Modifier
             .background(Color.LightGray)
@@ -231,7 +234,7 @@ fun ConstrainLayouts() {
                 )
                 absoluteLeft.linkTo(mainButton.end, margin = 16.dp)
             })
-        Text(text = "Secondary Text", modifier = Modifier.constrainAs(secondaryText){
+        Text(text = "Secondary Text", modifier = Modifier.constrainAs(secondaryText) {
             top.linkTo(mainText.bottom, margin = 16.dp)
             absoluteLeft.linkTo(mainButton.end, margin = 16.dp)
         })

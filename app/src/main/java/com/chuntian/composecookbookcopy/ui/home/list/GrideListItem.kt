@@ -6,9 +6,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -19,11 +20,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chuntian.composecookbookcopy.utils.TestTags
 import com.chuntian.data.model.Item
+import com.chuntian.theme.Shapes
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GridListItem(item: Item, modifier: Modifier = Modifier) {
     Card(
-        shape = MaterialTheme.shapes.medium,
+        shape = Shapes.medium,
         modifier = modifier
             .fillMaxWidth()
             .padding(8.dp)
@@ -41,17 +44,17 @@ fun GridListItem(item: Item, modifier: Modifier = Modifier) {
             Column(modifier = Modifier.padding(8.dp)) {
                 Text(
                     text = item.title,
-                    style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),
+                    style = MaterialTheme.typography.titleLarge.copy(fontSize = 14.sp),
                     maxLines = 4,
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
                     text = item.subtitle,
-                    style = MaterialTheme.typography.body2,
+                    style = MaterialTheme.typography.bodyMedium,
                     overflow = TextOverflow.Ellipsis,
                     maxLines = 3
                 )
-                Text(text = item.source, style = MaterialTheme.typography.subtitle2)
+                Text(text = item.source, style = MaterialTheme.typography.titleMedium)
             }
         }
     }

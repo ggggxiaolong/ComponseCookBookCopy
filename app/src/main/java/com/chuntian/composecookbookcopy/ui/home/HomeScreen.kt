@@ -3,14 +3,13 @@ package com.chuntian.composecookbookcopy.ui.home
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -32,14 +31,15 @@ import com.chuntian.composecookbookcopy.utils.LocalNavControl
 import com.chuntian.data.PATH
 import com.google.accompanist.pager.ExperimentalPagerApi
 
-@OptIn(ExperimentalCoilApi::class)
-@ExperimentalAnimationApi
-@ExperimentalMaterialApi
-@ExperimentalPagerApi
-@ExperimentalComposeUiApi
-@ExperimentalFoundationApi
+@OptIn(
+    ExperimentalCoilApi::class, ExperimentalFoundationApi::class,
+    ExperimentalComposeUiApi::class, ExperimentalMaterial3Api::class,
+    ExperimentalAnimationApi::class, ExperimentalPagerApi::class
+)
 @Composable
-fun HomeScreen(appThemeState: MutableState<AppThemeState>) {
+fun HomeScreen(
+    appThemeState: MutableState<AppThemeState>
+) {
     val controller = rememberNavController()
     val onBack: () -> Unit = { controller.popBackStack() }
     CompositionLocalProvider(LocalNavControl provides controller) {
@@ -64,30 +64,31 @@ fun HomeScreen(appThemeState: MutableState<AppThemeState>) {
             composable(PATH.CODING) {
                 CodingScreen(onBack)
             }
-            composable(PATH.HOME_CONSTRAINS_LAYOUT){
+            composable(PATH.HOME_CONSTRAINS_LAYOUT) {
                 ConstrainLayoutScreen(onBack)
             }
-            composable(PATH.HOME_MOTION_LAYOUT){
+            composable(PATH.HOME_MOTION_LAYOUT) {
                 MotionLayoutScree(onBack = onBack)
             }
-            composable(PATH.HOME_ADVANCE_LISTS){
+            composable(PATH.HOME_ADVANCE_LISTS) {
                 AdvanceListScreen(onBack = onBack)
             }
-            composable(PATH.HOME_CAROUSEL){
-                CarouselScreen (onBack = onBack)
+            composable(PATH.HOME_CAROUSEL) {
+                CarouselScreen(onBack = onBack)
             }
-            composable(PATH.HOME_RENDER_SCRIPT){
-                RenderScriptScreen (onBack = onBack)
+            composable(PATH.HOME_RENDER_SCRIPT) {
+                RenderScriptScreen(onBack = onBack)
             }
         }
     }
 
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScaffold(title: String, onBack: () -> Unit, content: @Composable (PaddingValues) -> Unit) {
     Scaffold(topBar = {
-        TopAppBar(title = { Text(text = title) }, elevation = 8.dp, navigationIcon = {
+        SmallTopAppBar(title = { Text(text = title) }, navigationIcon = {
             IconButton(
                 onClick = onBack
             ) {

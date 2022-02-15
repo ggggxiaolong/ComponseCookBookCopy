@@ -16,7 +16,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
@@ -173,12 +173,12 @@ fun AnimatedListItem(item: Tweet, itemIndex: Int, animationIndex: Int) {
         ) {
             Text(
                 text = item.author,
-                style = MaterialTheme.typography.h6.copy(fontSize = 16.sp),
-                color = MaterialTheme.colors.onSurface
+                style = MaterialTheme.typography.titleMedium.copy(fontSize = 16.sp),
+                color = MaterialTheme.colorScheme.onSurface
             )
             Text(
                 text = item.text,
-                style = MaterialTheme.typography.subtitle2,
+                style = MaterialTheme.typography.bodyMedium,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )

@@ -8,8 +8,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
 import androidx.compose.material.IconToggleButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import com.chuntian.data.DemoDataProvider
 import com.chuntian.data.model.Item
 import com.chuntian.theme.ComposeCookBookCopyTheme
+import com.chuntian.theme.Shapes
 
 @Composable
 fun VerticalListItemSmall(item: Item, modifier: Modifier = Modifier) {
@@ -34,8 +35,8 @@ fun VerticalListItemSmall(item: Item, modifier: Modifier = Modifier) {
         .padding(16.dp)) {
         ItemImage(item = item, Modifier.padding(end = 16.dp))
         Column(modifier = Modifier.weight(1f)) {
-            Text(text = item.title, style = typography.subtitle1)
-            Text(text = item.subtitle, style = typography.body2)
+            Text(text = item.title, style = typography.titleLarge)
+            Text(text = item.subtitle, style = typography.bodyMedium)
         }
         FavIcon(modifier)
     }
@@ -55,7 +56,7 @@ fun FavIcon(modifier: Modifier = Modifier) {
             },
             contentDescription = null,
             modifier = modifier,
-            tint = MaterialTheme.colors.primary
+            tint = MaterialTheme.colorScheme.primary
         )
     }
 }
@@ -66,7 +67,7 @@ fun ItemImage(item: Item, modifier: Modifier = Modifier) {
         painter = painterResource(id = item.imageId), contentDescription = null,
         modifier = modifier
             .size(100.dp, 80.dp)
-            .clip(MaterialTheme.shapes.medium),
+            .clip(Shapes.medium),
         contentScale = ContentScale.Crop
     )
 }

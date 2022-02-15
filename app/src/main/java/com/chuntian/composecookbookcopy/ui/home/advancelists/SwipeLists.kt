@@ -8,12 +8,15 @@ import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material.*
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.FractionalThreshold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.swipeable
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -33,7 +36,7 @@ import com.chuntian.theme.Green500
 import kotlin.math.roundToInt
 
 @ExperimentalAnimationApi
-@ExperimentalMaterialApi
+@ExperimentalMaterial3Api
 @Preview
 @Composable
 fun SwipeListView() {
@@ -45,7 +48,7 @@ fun SwipeListView() {
     }
 }
 
-@ExperimentalMaterialApi
+@ExperimentalMaterial3Api
 @ExperimentalAnimationApi
 @Composable
 fun SwiperListItem(index: Int, album: Album, onItemSwiped: (Int) -> Unit) {
@@ -68,14 +71,14 @@ fun BackgroundListItem(modifier: Modifier) {
             Icon(
                 imageVector = Icons.Default.Delete,
                 contentDescription = null,
-                tint = MaterialTheme.colors.onPrimary
+                tint = MaterialTheme.colorScheme.onPrimary
             )
         }
         IconButton(onClick = {}) {
             Icon(
                 imageVector = Icons.Default.AccountBox,
                 contentDescription = null,
-                tint = MaterialTheme.colors.onPrimary
+                tint = MaterialTheme.colorScheme.onPrimary
             )
         }
     }
@@ -85,10 +88,10 @@ enum class SwipeState {
     SWIPED, VISIBLE, MIDDLE
 }
 
-@ExperimentalMaterialApi
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
-    val swipeState = rememberSwipeableState(
+    val swipeState = androidx.compose.material.rememberSwipeableState(
         initialValue = SwipeState.VISIBLE,
         confirmStateChange = {
             if (it == SwipeState.SWIPED) {
@@ -107,7 +110,7 @@ fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
                 orientation = Orientation.Horizontal,
             )
             .offset { IntOffset(swipeState.offset.value.roundToInt(), 0) }
-            .background(MaterialTheme.colors.background),
+            .background(MaterialTheme.colorScheme.background),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
@@ -125,12 +128,12 @@ fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
         ) {
             Text(
                 text = album.song,
-                style = MaterialTheme.typography.h6.copy(fontSize = 16.sp),
-                color = MaterialTheme.colors.onSurface
+                style = MaterialTheme.typography.titleMedium.copy(fontSize = 16.sp),
+                color = MaterialTheme.colorScheme.onSurface
             )
             Text(
                 text = "${album.artist}, ${album.descriptions}",
-                style = MaterialTheme.typography.subtitle2,
+                style = MaterialTheme.typography.bodyMedium,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
@@ -139,7 +142,7 @@ fun ForegroundListItem(album: Album, index: Int, onItemSwiped: (Int) -> Unit) {
             Icon(
                 imageVector = Icons.Default.Favorite,
                 contentDescription = null,
-                tint = MaterialTheme.colors.primaryVariant,
+                tint = MaterialTheme.colorScheme.secondary,
                 modifier = Modifier
                     .padding(4.dp)
                     .size(20.dp)

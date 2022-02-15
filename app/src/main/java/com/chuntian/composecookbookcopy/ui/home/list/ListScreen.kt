@@ -1,24 +1,27 @@
 package com.chuntian.composecookbookcopy.ui.home.list
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.*
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Divider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.unit.dp
 import com.chuntian.composecookbookcopy.ui.home.HomeScaffold
 import com.chuntian.data.DemoDataProvider
 import timber.log.Timber
+import java.util.*
 
 
 @ExperimentalFoundationApi
 @Composable
 fun ListScreen(type: String, onBack: () -> Unit) {
-    HomeScaffold(title = type.lowercase().capitalize() + " List", onBack = onBack) {
+    HomeScaffold(title = type.lowercase().capitalize(Locale.ENGLISH) + " List", onBack = onBack) {
         Timber.i(type)
         when (type) {
             ListViewType.VERTICAL.name -> {
@@ -40,7 +43,7 @@ fun ListScreen(type: String, onBack: () -> Unit) {
 private fun ListItemDivider() {
     Divider(
         modifier = Modifier.padding(horizontal = 12.dp, vertical = 12.dp),
-        color = MaterialTheme.colors.onSurface.copy(alpha = 0.08f)
+        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
     )
 }
 
@@ -70,7 +73,7 @@ fun HorizontalListView() {
         Text(
             text = "Good Food",
             modifier = Modifier.padding(16.dp),
-            style = MaterialTheme.typography.subtitle1
+            style = MaterialTheme.typography.titleMedium
         )
         LazyRow(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
             items(list) {

@@ -1,5 +1,6 @@
 package com.chuntian.composecookbookcopy.ui.home.root
 
+import android.os.Build
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
@@ -9,10 +10,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FiberManualRecord
 import androidx.compose.material.icons.filled.Palette
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -21,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,17 +36,16 @@ import com.chuntian.data.PATH
 import com.chuntian.data.model.HomeScreenItems
 import com.chuntian.theme.*
 import com.chuntian.theme.R
-import java.lang.IllegalArgumentException
 
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class)
 @ExperimentalFoundationApi
 @Composable
 fun HomeRoot(appThemeState: MutableState<AppThemeState>) {
     val showMenu = remember { mutableStateOf(false) }
     Scaffold(modifier = Modifier.testTag(TestTags.HOME_SCREEN_ROOT),
         topBar = {
-            TopAppBar(
+            SmallTopAppBar(
                 title = { Text(text = "Compose Cookbook") },
-                elevation = 8.dp,
                 actions = {
                     IconButton(
                         onClick = {
@@ -78,11 +79,12 @@ fun HomeRoot(appThemeState: MutableState<AppThemeState>) {
 fun homeRootItemClicked(homeScreenItems: HomeScreenItems, controller: NavController) {
     try {
         controller.navigate(homeScreenItems.path)
-    }catch (e: IllegalArgumentException){
+    } catch (e: IllegalArgumentException) {
         controller.navigate(PATH.CODING)
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeRootScreenListView(
     homeScreenItems: HomeScreenItems, isWiderScreen: Boolean
@@ -94,15 +96,15 @@ fun HomeRootScreenListView(
                 .padding(8.dp)
                 .clickable { homeRootItemClicked(homeScreenItems, controller) }
                 .height(150.dp),
-            backgroundColor = MaterialTheme.colors.primary,
+            containerColor = MaterialTheme.colorScheme.primary,
             shape = RoundedCornerShape(8.dp),
-            elevation = 4.dp,
-            contentColor = MaterialTheme.colors.onPrimary
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+            contentColor = MaterialTheme.colorScheme.onPrimary
         ) {
             Text(
                 text = homeScreenItems.name,
                 modifier = Modifier.padding(8.dp),
-                style = MaterialTheme.typography.h6
+                style = MaterialTheme.typography.bodyLarge
             )
         }
     } else {
@@ -116,7 +118,7 @@ fun HomeRootScreenListView(
             Text(
                 text = homeScreenItems.name,
                 modifier = Modifier.padding(8.dp),
-                style = MaterialTheme.typography.button
+                style = MaterialTheme.typography.bodyMedium
             )
         }
     }
@@ -134,6 +136,7 @@ fun MenuItem(color: Color, name: String, onPalletChange: () -> Unit) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PalletMenu(
     modifier: Modifier,
@@ -144,7 +147,7 @@ fun PalletMenu(
         modifier = modifier
             .padding(8.dp)
             .animateContentSize(),
-        elevation = 8.dp
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
         Column(horizontalAlignment = Alignment.Start) {
             if (showMenu) {
@@ -159,10 +162,19 @@ fun PalletMenu(
                         onPalletChange.invoke(item.third)
                     }
                 }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    MenuItem(
+                        color = dynamicLightColorScheme(LocalContext.current).primary,
+                        name = "Dynamic"
+                    ) {
+                        onPalletChange.invoke(ColorPallet.WALLPAPER)
+                    }
+                }
             }
         }
     }
 }
+
 
 @ExperimentalFoundationApi
 @Composable

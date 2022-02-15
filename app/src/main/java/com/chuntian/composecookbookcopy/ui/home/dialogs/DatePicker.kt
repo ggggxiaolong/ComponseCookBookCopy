@@ -5,9 +5,9 @@ import androidx.appcompat.view.ContextThemeWrapper
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -33,7 +33,7 @@ fun CalendarPicker(onDateSelected: (LocalDate) -> Unit, onDismissRequest: () -> 
             modifier = Modifier
                 .width(IntrinsicSize.Min)
                 .background(
-                    color = MaterialTheme.colors.surface,
+                    color = MaterialTheme.colorScheme.surface,
                     shape = RoundedCornerShape(size = 4.dp)
                 )
         ) {
@@ -42,23 +42,23 @@ fun CalendarPicker(onDateSelected: (LocalDate) -> Unit, onDismissRequest: () -> 
                     .defaultMinSize(minHeight = 72.dp)
                     .fillMaxWidth()
                     .background(
-                        color = MaterialTheme.colors.primary,
+                        color = MaterialTheme.colorScheme.primary,
                         shape = RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp)
                     )
                     .padding(16.dp)
             ) {
                 Text(
                     text = "Select date".uppercase(),
-                    style = MaterialTheme.typography.caption,
-                    color = MaterialTheme.colors.onPrimary
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onPrimary
                 )
 
                 Spacer(modifier = Modifier.size(24.dp))
 
                 Text(
                     text = selDate.value.format(DateTimeFormatter.ofPattern("MMM d, YYYY")),
-                    style = MaterialTheme.typography.h4,
-                    color = MaterialTheme.colors.onPrimary
+                    style = MaterialTheme.typography.titleMedium,
+                    color = MaterialTheme.colorScheme.onPrimary
                 )
 
                 Spacer(modifier = Modifier.size(16.dp))
@@ -80,7 +80,7 @@ fun CalendarPicker(onDateSelected: (LocalDate) -> Unit, onDismissRequest: () -> 
                 ) {
                     Text(
                         text = "Cancel",
-                        style = MaterialTheme.typography.button,
+                        style = MaterialTheme.typography.bodyMedium,
                         color = Color.Gray
                     )
                 }
@@ -93,8 +93,8 @@ fun CalendarPicker(onDateSelected: (LocalDate) -> Unit, onDismissRequest: () -> 
                 ) {
                     Text(
                         text = "OK",
-                        style = MaterialTheme.typography.button,
-                        color = MaterialTheme.colors.primary
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.primary
                     )
                 }
 
@@ -113,6 +113,7 @@ fun CustomCalendarView(onDateSelected: (LocalDate) -> Unit) {
         ColorPallet.PURPLE -> if (darkTheme) R.style.CalendarDarkPurple else R.style.CalendarLightPurple
         ColorPallet.ORANGE -> if (darkTheme) R.style.CalendarDarkOrange else R.style.CalendarLightOrange
         ColorPallet.BLUE -> if (darkTheme) R.style.CalendarDarkBlue else R.style.CalendarLightBlue
+        else -> if (darkTheme) R.style.CalendarDarkGreen else R.style.CalendarLightGreen
     }
     AndroidView(
         modifier = Modifier.wrapContentSize(),

@@ -9,12 +9,13 @@ pluginManagement {
         mavenCentral()
     }
     plugins {
-        id 'com.android.application' version '7.1.0-beta04'
-        id 'com.android.library' version '7.1.0-beta04'
-        id 'org.jetbrains.kotlin.android' version '1.6.0'
-        id 'org.jetbrains.kotlin.jvm' version '1.6.0'
-        id "org.jetbrains.kotlin.plugin.serialization" version "1.6.0"
-        id "org.jetbrains.kotlin.plugin.parcelize" version "1.6.0"
+        id 'com.android.application' version '7.1.1'
+        id 'com.android.library' version '7.1.1'
+        id 'org.jetbrains.kotlin.android' version '1.6.10'
+        id 'org.jetbrains.kotlin.jvm' version '1.6.10'
+        id "org.jetbrains.kotlin.plugin.serialization" version "1.6.10"
+        id "org.jetbrains.kotlin.plugin.parcelize" version "1.6.10"
+        id "com.github.ben-manes.versions" version "0.39.0"
     }
 }
 dependencyResolutionManagement {
@@ -23,10 +24,6 @@ dependencyResolutionManagement {
 //        maven{ url = uri("https://maven.aliyun.com/repository/google") }
 //        maven{ url = uri("https://maven.aliyun.com/repository/public") }
 //        maven{ url = uri("https://maven.aliyun.com/repository/central") }
-//        maven {
-//            allowInsecureProtocol = true
-//            url = uri("http://localhost:8081/repository/tapplock")
-//        }
         google()
         mavenCentral()
         maven{ url = uri("https://jitpack.io") }

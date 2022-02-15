@@ -3,9 +3,10 @@ package com.chuntian.composecookbookcopy.ui.home.list
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -18,11 +19,13 @@ import com.chuntian.composecookbookcopy.utils.TestTags
 import com.chuntian.data.DemoDataProvider
 import com.chuntian.data.model.Item
 import com.chuntian.theme.ComposeCookBookCopyTheme
+import com.chuntian.theme.Shapes
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HorizontalListItem(item: Item, modifier: Modifier = Modifier) {
     Card(
-        shape = MaterialTheme.shapes.medium,
+        shape = Shapes.medium,
         modifier = modifier
             .size(280.dp, 200.dp)
             .testTag("${TestTags.HOME_SCREEN_LIST_ITEM}-${item.id}")
@@ -39,7 +42,7 @@ fun HorizontalListItem(item: Item, modifier: Modifier = Modifier) {
             Column(modifier = Modifier.padding(16.dp)) {
                 Text(
                     text = item.title,
-                    style = MaterialTheme.typography.h6,
+                    style = MaterialTheme.typography.titleLarge,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
@@ -47,9 +50,9 @@ fun HorizontalListItem(item: Item, modifier: Modifier = Modifier) {
                     text = item.subtitle,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
-                    style = MaterialTheme.typography.body2
+                    style = MaterialTheme.typography.bodyMedium
                 )
-                Text(text = item.source, style = MaterialTheme.typography.subtitle2)
+                Text(text = item.source, style = MaterialTheme.typography.titleMedium)
             }
         }
     }

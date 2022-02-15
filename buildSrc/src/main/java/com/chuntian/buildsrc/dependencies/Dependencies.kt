@@ -1,5 +1,44 @@
 package com.chuntian.buildsrc.dependencies
 
+object Versions {
+    const val compose = "1.1.0"
+    const val lifecycleViewModelCompose = "2.4.0-rc01"
+    const val activityCompose = "1.3.1"
+    const val pagingCompose = "1.0.0-alpha12"
+    const val navCompose = "2.4.0-rc01"
+    const val constraintLayoutCompose = "1.0.0"
+    const val fontAwesomeCompose = "1.0.0-beta02"
+    const val accompanistCoil = "0.14.0"
+    const val coilCompose = "1.4.0"
+    const val kotlin = "1.6.10"
+    const val coroutines = "1.6.0"
+    const val androidLifecycleGrouped = "2.3.1"
+    const val flinger = "1.0.5"
+    const val paging = "3.0.1"
+    const val lottie = "4.2.0"
+    const val room = "2.4.1"
+    const val coreKtx = "1.6.0"
+    const val appcompat = "1.3.1"
+    const val paletteKtx = "1.0.0"
+    const val material = "1.4.0"
+    const val material3 = "1.0.0-alpha05"
+    const val playServicesAds = "19.6.0"
+    const val googleMaps = "3.1.0-beta"
+    const val playServicesMaps = "17.0.1"
+    const val exoplayer = "2.14.2"
+    const val loggingInterceptor ="4.9.1"
+    const val retrofit = "2.9.0"
+    const val serialization = "1.2.2"
+    const val junit = "5.7.0"
+    const val truth = "1.1.3"
+    const val androidXJunit = "1.1.2"
+    const val desugar = "1.1.5"
+    const val dialogs = "0.6.0"
+    const val timber = "5.0.1"
+    const val accompanist = "0.20.0"
+    const val biometric = "1.2.0-alpha03"
+}
+
 object Dependencies {
     const val kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
     const val fontAwesomeCompose = "com.github.Gurupreet:FontAwesomeCompose:${Versions.fontAwesomeCompose}"
@@ -15,6 +54,7 @@ object Dependencies {
     const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
     const val composeUiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
     const val composeMaterial = "androidx.compose.material:material:${Versions.compose}"
+    const val composeMaterial3 = "androidx.compose.material3:material3:${Versions.material3}"
     const val composeMaterialIconsExtended =
         "androidx.compose.material:material-icons-extended:${Versions.compose}"
     const val composeRuntimeLivedata =
@@ -85,4 +125,5 @@ object Dependencies {
     const val composeNavigationMaterial = "com.google.accompanist:accompanist-navigation-material:${Versions.accompanist}"
     const val composeDrawablePainer = "com.google.accompanist:accompanist-drawablepainter:${Versions.accompanist}"
     const val composeSwipeRefresh = "com.google.accompanist:accompanist-swiperefresh:${Versions.accompanist}"
+    const val biometric = "androidx.biometric:biometric:${Versions.biometric}"
 }

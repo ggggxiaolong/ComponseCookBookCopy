@@ -1,11 +1,19 @@
 package com.chuntian.composecookbookcopy.utils
 
+import FaIcons
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -28,10 +36,10 @@ fun HeadingSection(modifier: Modifier = Modifier, title: String = "", subtitle: 
             .padding(16.dp)
     ) {
         if (title.isNotEmpty()) {
-            Text(text = title, style = MaterialTheme.typography.h6.copy(fontSize = 14.sp))
+            Text(text = title, style = MaterialTheme.typography.titleLarge.copy(fontSize = 14.sp))
         }
         if (subtitle.isNotEmpty()) {
-            Text(text = subtitle, style = MaterialTheme.typography.subtitle2)
+            Text(text = subtitle, style = MaterialTheme.typography.titleMedium)
         }
         Divider()
     }
@@ -46,7 +54,7 @@ fun previewHeadingSection() {
 @Composable
 fun TitleText(modifier: Modifier = Modifier, title: String) {
     Text(
-        text = title, style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),
+        text = title, style = MaterialTheme.typography.titleLarge.copy(fontSize = 14.sp),
         modifier = modifier.padding(8.dp)
     )
 }
@@ -55,7 +63,7 @@ fun TitleText(modifier: Modifier = Modifier, title: String) {
 fun Subtitle(subtitle: String, modifier: Modifier = Modifier) {
     Text(
         text = subtitle,
-        style = MaterialTheme.typography.subtitle2,
+        style = MaterialTheme.typography.titleMedium,
         modifier = modifier.padding(8.dp)
     )
 }
@@ -84,7 +92,7 @@ fun RotateIcon(
 @Composable
 fun CodingScreen(onBack: () -> Unit) {
     Scaffold(topBar = {
-        TopAppBar(title = { Text(text = "Coding..") }, navigationIcon = {
+        SmallTopAppBar(title = { Text(text = "Coding..") }, navigationIcon = {
             IconButton(onClick = onBack) {
                 Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = null)
             }
@@ -98,7 +106,7 @@ fun CodingScreen(onBack: () -> Unit) {
             LottieAnimation(composition = composition, modifier = Modifier.height(300.dp))
             Text(
                 text = "work in progress",
-                style = MaterialTheme.typography.body1,
+                style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
         }

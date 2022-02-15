@@ -6,9 +6,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.*
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -37,7 +36,7 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
         DialogType.SIMPLE -> AlertDialog(
             onDismissRequest = onDismiss,
             text = { Text(text = item.subtitle) },
-            buttons = {
+            confirmButton = {
                 TextButton(
                     onClick = onDismiss, modifier = Modifier.padding(8.dp)
                 ) {
@@ -46,23 +45,23 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
             })
         DialogType.TITLE -> AlertDialog(
             onDismissRequest = onDismiss,
-            title = { Text(text = item.title, style = MaterialTheme.typography.h6) },
+            title = { Text(text = item.title, style = MaterialTheme.typography.titleMedium) },
             text = { Text(text = item.subtitle) },
-            buttons = {
-                Row(modifier = Modifier) {
-                    TextButton(onClick = onDismiss, modifier = Modifier.padding(4.dp)) {
-                        Text(text = "Cancel", color = Color.Gray)
-                    }
-                    TextButton(onClick = onDismiss, modifier = Modifier.padding(4.dp)) {
-                        Text(text = "Ok")
-                    }
+            dismissButton = {
+                TextButton(onClick = onDismiss, modifier = Modifier.padding(4.dp)) {
+                    Text(text = "Cancel", color = Color.Gray)
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = onDismiss, modifier = Modifier.padding(4.dp)) {
+                    Text(text = "Ok")
                 }
             }
         )
         DialogType.VERTICAL_BUTTON -> AlertDialog(onDismissRequest = onDismiss,
-            title = { Text(text = item.title, style = MaterialTheme.typography.h6) },
+            title = { Text(text = item.title, style = MaterialTheme.typography.titleMedium) },
             text = { Text(text = item.subtitle) },
-            buttons = {
+            dismissButton = {
                 OutlinedButton(
                     onClick = onDismiss, modifier = Modifier
                         .padding(8.dp)
@@ -70,6 +69,8 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
                 ) {
                     Text(text = "Cancel")
                 }
+            },
+            confirmButton = {
                 Button(
                     onClick = onDismiss, modifier = Modifier
                         .padding(8.dp)
@@ -77,16 +78,18 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
                 ) {
                     Text(text = "Ok")
                 }
-            })
+            }
+
+        )
         DialogType.IMAGE -> AlertDialog(onDismissRequest = onDismiss,
-            title = { Text(text = item.title, style = MaterialTheme.typography.h6) },
+            title = { Text(text = item.title, style = MaterialTheme.typography.titleMedium) },
             text = {
                 Column {
                     Text(text = item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
                     Image(painter = painterResource(id = item.imageId), contentDescription = null)
                 }
             },
-            buttons = {
+            confirmButton = {
                 TextButton(onClick = onDismiss, modifier = Modifier.padding(8.dp)) {
                     Text(text = "Ok")
                 }
@@ -94,7 +97,7 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
         )
         DialogType.LONG_DIALOG ->
             AlertDialog(
-                title = { Text(text = item.title, style = MaterialTheme.typography.h6) },
+                title = { Text(text = item.title, style = MaterialTheme.typography.titleMedium) },
                 text = {
                     Column {
                         Text(text = item.subtitle, modifier = Modifier.padding(8.dp))
@@ -104,11 +107,11 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
                         )
                         Text(
                             text = item.subtitle + item.title + item.subtitle + item.title,
-                            style = MaterialTheme.typography.subtitle2
+                            style = MaterialTheme.typography.bodyMedium
                         )
                     }
                 },
-                buttons = {
+                confirmButton = {
                     TextButton(onClick = onDismiss, modifier = Modifier.padding(8.dp)) {
                         Text(text = "Ok")
                     }
@@ -117,14 +120,14 @@ fun ShowDialog(type: DialogType, onDismiss: () -> Unit) {
             )
         DialogType.ROUNDED -> AlertDialog(
             onDismissRequest = onDismiss,
-            title = { Text(text = item.title, style = MaterialTheme.typography.h6) },
+            title = { Text(text = item.title, style = MaterialTheme.typography.titleMedium) },
             text = {
                 Column {
                     Text(text = item.subtitle, modifier = Modifier.padding(bottom = 8.dp))
                     Image(painter = painterResource(id = item.imageId), contentDescription = null)
                 }
             },
-            buttons = {
+            confirmButton = {
                 TextButton(onClick = onDismiss, modifier = Modifier.padding(8.dp)) {
                     Text(text = "Ok")
                 }
