@@ -54,7 +54,7 @@ fun SwipeListView() {
 fun SwiperListItem(index: Int, album: Album, onItemSwiped: (Int) -> Unit) {
     val visible = remember(album.id) { mutableStateOf(true) }
     AnimatedVisibility(visible = visible.value) {
-        Box(modifier = Modifier.background(Green500)) {
+        Box(modifier = Modifier.background(MaterialTheme.colorScheme.secondary)) {
             BackgroundListItem(modifier = Modifier.align(Alignment.CenterEnd))
             ForegroundListItem(album, index) {
                 visible.value = false

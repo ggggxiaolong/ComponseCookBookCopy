@@ -40,6 +40,7 @@ fun AdvanceListView() {
     val scope = rememberCoroutineScope()
     Column {
         ScrollableTabRow(
+            backgroundColor = MaterialTheme.colorScheme.surface,
             selectedTabIndex = pagerState.currentPage,
             edgePadding = 12.dp,
             indicator = { tabPositions ->

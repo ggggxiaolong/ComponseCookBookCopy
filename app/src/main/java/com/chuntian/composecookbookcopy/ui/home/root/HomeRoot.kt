@@ -180,7 +180,7 @@ fun PalletMenu(
 @Composable
 fun HomeRootScreenContent(
     showMenu: MutableState<Boolean>,
-    onPalletChange: (ColorPallet) -> Unit
+    onPalletChange: (ColorPallet) -> Unit,
 ) {
     val list = remember { DemoDataProvider.homeScreenListItems }
     val screenWidth = LocalConfiguration.current.screenWidthDp

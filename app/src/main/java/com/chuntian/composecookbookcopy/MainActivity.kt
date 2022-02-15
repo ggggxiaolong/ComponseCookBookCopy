@@ -8,25 +8,22 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material3.*
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
@@ -34,6 +31,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chuntian.composecookbookcopy.theme.AppThemeState
 import com.chuntian.composecookbookcopy.ui.home.HomeScreen
@@ -162,19 +160,35 @@ private fun NavigationRailContent(
 @ExperimentalFoundationApi
 @Composable
 fun HomeScreenContent(
+    modifier: Modifier,
     homeScreen: BottomNavType,
     appThemeState: MutableState<AppThemeState>,
-    modifier: Modifier
+    homeNavigateState: MutableState<Boolean>,
 ) {
     Column(modifier = modifier) {
         Crossfade(homeScreen) { screen ->
             Surface(color = MaterialTheme.colorScheme.background) {
                 when (screen) {
-                    BottomNavType.HOME -> HomeScreen(appThemeState = appThemeState)
-                    BottomNavType.WIDGETS -> HomeScreen(appThemeState = appThemeState)
-                    BottomNavType.ANIMATION -> HomeScreen(appThemeState = appThemeState)
-                    BottomNavType.DEMO_UI -> HomeScreen(appThemeState = appThemeState)
-                    BottomNavType.TEMPLATE -> HomeScreen(appThemeState = appThemeState)
+                    BottomNavType.HOME -> HomeScreen(
+                        appThemeState = appThemeState,
+                        homeNavigateState = homeNavigateState
+                    )
+                    BottomNavType.WIDGETS -> HomeScreen(
+                        appThemeState = appThemeState,
+                        homeNavigateState = homeNavigateState
+                    )
+                    BottomNavType.ANIMATION -> HomeScreen(
+                        appThemeState = appThemeState,
+                        homeNavigateState = homeNavigateState
+                    )
+                    BottomNavType.DEMO_UI -> HomeScreen(
+                        appThemeState = appThemeState,
+                        homeNavigateState = homeNavigateState
+                    )
+                    BottomNavType.TEMPLATE -> HomeScreen(
+                        appThemeState = appThemeState,
+                        homeNavigateState = homeNavigateState
+                    )
                 }
             }
         }
@@ -194,6 +208,9 @@ fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
     val chooseColorBottomModalState =
         rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
     val coroutineScope = rememberCoroutineScope()
+    val homeNavigateState = remember { mutableStateOf(false) }
+    val animateNavigateState =
+        animateDpAsState(targetValue = if (homeNavigateState.value) 0.dp else 80.dp, tween(1000))
     val list = listOf(
         NavigationItemData(
             BottomNavType.HOME,
@@ -245,12 +262,18 @@ fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
         val orientation = LocalConfiguration.current.orientation
         if (orientation == Configuration.ORIENTATION_PORTRAIT) {
             Column {
-                HomeScreenContent(homeScreenState.value, appThemeState, Modifier.weight(1f))
+                HomeScreenContent(
+                    homeScreen = homeScreenState.value,
+                    appThemeState = appThemeState,
+                    modifier = Modifier.weight(1f),
+                    homeNavigateState = homeNavigateState,
+                )
                 BottomNavigationContent(
                     items = list,
                     homeScreenState = homeScreenState,
                     modifier = Modifier
                         .semantics { contentDescription = bottomNavBarContentDescription }
+                        .height(animateNavigateState.value)
                         .testTag(TestTags.BOTTOM_NAV_TEST_TAG)
                 )
             }
@@ -262,10 +285,16 @@ fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
                         .semantics {
                             contentDescription = bottomNavBarContentDescription
                         }
+                        .width(animateNavigateState.value)
                         .testTag(TestTags.BOTTOM_NAV_TEST_TAG),
                     homeScreenState = homeScreenState
                 )
-                HomeScreenContent(homeScreenState.value, appThemeState, Modifier.weight(1f))
+                HomeScreenContent(
+                    homeScreen = homeScreenState.value,
+                    appThemeState = appThemeState,
+                    modifier = Modifier.weight(1f),
+                    homeNavigateState = homeNavigateState,
+                )
             }
         }
     }
@@ -278,7 +307,7 @@ fun BaseView(
     content: @Composable () -> Unit
 ) {
     val systemUiController = rememberSystemUiController()
-    systemUiController.setSystemBarsColor(if (appThemeState.darkTheme) Color.Black else Color.White)
+    systemUiController.setSystemBarsColor(MaterialTheme.colorScheme.surface)
     ComposeCookBookCopyTheme(
         darkTheme = appThemeState.darkTheme,
         colorPallet = appThemeState.pallet

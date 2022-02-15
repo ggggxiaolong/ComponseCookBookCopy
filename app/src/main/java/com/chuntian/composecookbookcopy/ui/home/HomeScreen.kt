@@ -38,10 +38,14 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 )
 @Composable
 fun HomeScreen(
-    appThemeState: MutableState<AppThemeState>
+    appThemeState: MutableState<AppThemeState>,
+    homeNavigateState: MutableState<Boolean>,
 ) {
     val controller = rememberNavController()
     val onBack: () -> Unit = { controller.popBackStack() }
+    controller.addOnDestinationChangedListener{_,destination,_ ->
+        homeNavigateState.value = destination.route != PATH.HOME
+    }
     CompositionLocalProvider(LocalNavControl provides controller) {
         NavHost(navController = controller, startDestination = PATH.HOME) {
             composable(PATH.HOME) { HomeRoot(appThemeState = appThemeState) }
