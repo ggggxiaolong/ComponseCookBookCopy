@@ -29,13 +29,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.chuntian.composecookbookcopy.theme.AppThemeState
+import com.chuntian.composecookbookcopy.utils.IOScope
 import com.chuntian.composecookbookcopy.utils.LocalNavControl
 import com.chuntian.composecookbookcopy.utils.TestTags
 import com.chuntian.data.DemoDataProvider
 import com.chuntian.data.PATH
+import com.chuntian.data.db.DB
 import com.chuntian.data.model.HomeScreenItems
 import com.chuntian.theme.*
 import com.chuntian.theme.R
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class)
 @ExperimentalFoundationApi
@@ -49,8 +52,12 @@ fun HomeRoot(appThemeState: MutableState<AppThemeState>) {
                 actions = {
                     IconButton(
                         onClick = {
-                            appThemeState.value =
+                            val newData =
                                 appThemeState.value.copy(darkTheme = !appThemeState.value.darkTheme)
+                            appThemeState.value = newData
+                            IOScope().launch {
+                                DB.instance().themeDao().save(newData.toTheme())
+                            }
                         }
                     ) {
                         Icon(
@@ -67,8 +74,12 @@ fun HomeRoot(appThemeState: MutableState<AppThemeState>) {
             HomeRootScreenContent(
                 showMenu = showMenu,
                 onPalletChange = { newPalletSelected ->
-                    appThemeState.value = appThemeState.value.copy(pallet = newPalletSelected)
+                    val newData = appThemeState.value.copy(pallet = newPalletSelected)
+                    appThemeState.value = newData
                     showMenu.value = false
+                    IOScope().launch {
+                        DB.instance().themeDao().save(newData.toTheme())
+                    }
                 }
             )
         }

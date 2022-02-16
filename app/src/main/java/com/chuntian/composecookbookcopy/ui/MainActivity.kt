@@ -1,4 +1,4 @@
-package com.chuntian.composecookbookcopy
+package com.chuntian.composecookbookcopy.ui
 
 import FaIcons
 import android.content.res.Configuration
@@ -33,19 +33,26 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.chuntian.composecookbookcopy.R
 import com.chuntian.composecookbookcopy.theme.AppThemeState
 import com.chuntian.composecookbookcopy.ui.home.HomeScreen
 import com.chuntian.composecookbookcopy.ui.home.root.PalletMenu
+import com.chuntian.composecookbookcopy.utils.IOScope
 import com.chuntian.composecookbookcopy.utils.LocalThemeState
 import com.chuntian.composecookbookcopy.utils.RotateIcon
 import com.chuntian.composecookbookcopy.utils.TestTags
+import com.chuntian.data.db.DB
+import com.chuntian.data.db.Theme
 import com.chuntian.theme.ColorPallet
 import com.chuntian.theme.ComposeCookBookCopyTheme
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.guru.fontawesomecomposelib.FaIcon
 import com.guru.fontawesomecomposelib.FaIconType
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
     @OptIn(
@@ -57,11 +64,16 @@ class MainActivity : AppCompatActivity() {
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            val appTheme = remember { mutableStateOf(AppThemeState()) }
-            CompositionLocalProvider(LocalThemeState provides appTheme.value) {
-                BaseView(appThemeState = appTheme.value) {
-                    MainAppContent(appThemeState = appTheme)
+        IOScope().launch {
+            val appThemeState = AppThemeState.fromTheme(DB.instance().themeDao().getTheme())
+            withContext(Dispatchers.Main) {
+                setContent {
+                    val appTheme = remember { mutableStateOf(appThemeState) }
+                    CompositionLocalProvider(LocalThemeState provides appTheme.value) {
+                        BaseView(appThemeState = appTheme.value) {
+                            MainAppContent(appThemeState = appTheme)
+                        }
+                    }
                 }
             }
         }
@@ -253,9 +265,13 @@ fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
             modifier = Modifier.align(Alignment.CenterHorizontally),
             showMenu = false
         ) { newPalletSelected ->
-            appThemeState.value = appThemeState.value.copy(pallet = newPalletSelected)
+            val newData = appThemeState.value.copy(pallet = newPalletSelected)
+            appThemeState.value = newData
             coroutineScope.launch {
                 chooseColorBottomModalState.hide()
+                withContext(Dispatchers.IO){
+                    DB.instance().themeDao().save(newData.toTheme())
+                }
             }
         }
     }, sheetState = chooseColorBottomModalState) {

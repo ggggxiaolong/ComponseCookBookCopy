@@ -1,4 +1,4 @@
-package com.chuntian.composecookbookcopy
+package com.chuntian.composecookbookcopy.ui
 
 enum class BottomNavType{
     HOME,
