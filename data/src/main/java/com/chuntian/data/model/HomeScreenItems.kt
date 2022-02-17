@@ -5,7 +5,7 @@ import com.chuntian.data.PATH
 sealed class HomeScreenItems {
     object Dialogs : HomeScreenItems()
     object TabLayout : HomeScreenItems()
-    object Carousel : HomeScreenItems()
+    object Pager : HomeScreenItems()
     object Layouts : HomeScreenItems()
     data class ListView(val type: String = "Vertical") : HomeScreenItems()
     object AdvanceLists : HomeScreenItems()
@@ -24,7 +24,7 @@ sealed class HomeScreenItems {
         get() = when(this) {
             Dialogs -> "Dialogs"
             TabLayout -> "TabLayout"
-            Carousel -> "Carousel"
+            Pager -> "Pager"
             RenderScript -> "RenderScript"
             is ListView -> "$type ListView"
             ConstrainsLayout -> "Constraint Layout"
@@ -44,7 +44,7 @@ sealed class HomeScreenItems {
         get() = when(this){
             Dialogs -> PATH.HOME_DIALOGS
             TabLayout -> PATH.HOME_TAB_LAYOUT
-            Carousel -> PATH.HOME_CAROUSEL
+            Pager -> PATH.HOME_PAGER
             is ListView -> PATH.HOME_LIST.replace("{type}", type)
             ConstrainsLayout -> PATH.HOME_CONSTRAINS_LAYOUT
             MotionLayout -> PATH.HOME_MOTION_LAYOUT

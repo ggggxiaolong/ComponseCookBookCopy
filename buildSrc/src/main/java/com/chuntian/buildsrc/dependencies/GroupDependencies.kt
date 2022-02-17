@@ -2,6 +2,7 @@ package com.chuntian.buildsrc.dependencies
 
 internal val composeOfficialDependencies = listOf(
     Dependencies.composeUi,
+    Dependencies.composeUiUtil,
     Dependencies.composeUiTooling,
     Dependencies.composeMaterial,
     Dependencies.composeMaterial3,

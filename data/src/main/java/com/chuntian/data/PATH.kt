@@ -8,7 +8,7 @@ object PATH {
     const val HOME_MODIFIER = "/home/modifiers"
     const val HOME_LAYOUTS = "/home/layouts"
     const val HOME_TAB_LAYOUT = "/home/tabLayout"
-    const val HOME_CAROUSEL = "/home/carousel"
+    const val HOME_PAGER = "/home/pager"
     const val HOME_CONSTRAINS_LAYOUT = "/home/constrainsLayout"
     const val HOME_MOTION_LAYOUT = "/home/motionLayout"
     const val HOME_COLLAPSING_APPBAR = "/home/collapsingAppBar"

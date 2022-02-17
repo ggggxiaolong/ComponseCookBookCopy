@@ -17,7 +17,7 @@ import coil.annotation.ExperimentalCoilApi
 import com.chuntian.composecookbookcopy.theme.AppThemeState
 import com.chuntian.composecookbookcopy.ui.home.advancelists.AdvanceListScreen
 import com.chuntian.composecookbookcopy.ui.home.androidViews.AndroidViewScreen
-import com.chuntian.composecookbookcopy.ui.home.carousel.CarouselScreen
+import com.chuntian.composecookbookcopy.ui.home.pager.PagerScreen
 import com.chuntian.composecookbookcopy.ui.home.constrainLayout.ConstrainLayoutScreen
 import com.chuntian.composecookbookcopy.ui.home.customFling.CustomFlingScreen
 import com.chuntian.composecookbookcopy.ui.home.dialogs.DialogScreen
@@ -79,8 +79,8 @@ fun HomeScreen(
             composable(PATH.HOME_ADVANCE_LISTS) {
                 AdvanceListScreen(onBack = onBack)
             }
-            composable(PATH.HOME_CAROUSEL) {
-                CarouselScreen(onBack = onBack)
+            composable(PATH.HOME_PAGER) {
+                PagerScreen(onBack = onBack)
             }
             composable(PATH.HOME_RENDER_SCRIPT) {
                 RenderScriptScreen(onBack = onBack)

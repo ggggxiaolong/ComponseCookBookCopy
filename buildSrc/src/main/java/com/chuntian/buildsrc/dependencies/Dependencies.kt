@@ -52,6 +52,7 @@ object Dependencies {
     const val googleMaps = "com.google.android.libraries.maps:maps:${Versions.googleMaps}"
     const val playServicesMaps = "com.google.android.gms:play-services-maps:${Versions.playServicesMaps}"
     const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
+    const val composeUiUtil = "androidx.compose.ui:ui-util:${Versions.compose}"
     const val composeUiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
     const val composeMaterial = "androidx.compose.material:material:${Versions.compose}"
     const val composeMaterial3 = "androidx.compose.material3:material3:${Versions.material3}"
