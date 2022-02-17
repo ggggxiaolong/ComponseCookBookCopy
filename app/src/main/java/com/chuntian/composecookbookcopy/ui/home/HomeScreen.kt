@@ -18,6 +18,7 @@ import com.chuntian.composecookbookcopy.theme.AppThemeState
 import com.chuntian.composecookbookcopy.ui.home.advancelists.AdvanceListScreen
 import com.chuntian.composecookbookcopy.ui.home.carousel.CarouselScreen
 import com.chuntian.composecookbookcopy.ui.home.constrainLayout.ConstrainLayoutScreen
+import com.chuntian.composecookbookcopy.ui.home.customFling.CustomFlingScreen
 import com.chuntian.composecookbookcopy.ui.home.dialogs.DialogScreen
 import com.chuntian.composecookbookcopy.ui.home.layout.LayoutScreen
 import com.chuntian.composecookbookcopy.ui.home.list.ListScreen
@@ -82,6 +83,9 @@ fun HomeScreen(
             }
             composable(PATH.HOME_RENDER_SCRIPT) {
                 RenderScriptScreen(onBack = onBack)
+            }
+            composable(PATH.HOME_CUSTOM_FLING){
+                CustomFlingScreen(onBack = onBack)
             }
         }
     }
