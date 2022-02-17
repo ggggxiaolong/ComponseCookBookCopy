@@ -80,6 +80,7 @@ dependencies {
     implementation(project(":theme"))
     implementation(project(":demo:youtube"))
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar"))))
+    implementation("com.google.android.libraries.maps:maps:3.1.0-beta")
 //    implementation("com.mrtan.renderscript-toolkit:renderscript-toolkit:1.0")
     addDesugarDependencies()
     addKotlinDependencies()

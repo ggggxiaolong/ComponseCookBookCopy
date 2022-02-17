@@ -16,6 +16,7 @@ import androidx.navigation.compose.rememberNavController
 import coil.annotation.ExperimentalCoilApi
 import com.chuntian.composecookbookcopy.theme.AppThemeState
 import com.chuntian.composecookbookcopy.ui.home.advancelists.AdvanceListScreen
+import com.chuntian.composecookbookcopy.ui.home.androidViews.AndroidViewScreen
 import com.chuntian.composecookbookcopy.ui.home.carousel.CarouselScreen
 import com.chuntian.composecookbookcopy.ui.home.constrainLayout.ConstrainLayoutScreen
 import com.chuntian.composecookbookcopy.ui.home.customFling.CustomFlingScreen
@@ -86,6 +87,9 @@ fun HomeScreen(
             }
             composable(PATH.HOME_CUSTOM_FLING){
                 CustomFlingScreen(onBack = onBack)
+            }
+            composable(PATH.HOME_ANDROID_VIEW){
+                AndroidViewScreen(onBack = onBack)
             }
         }
     }
