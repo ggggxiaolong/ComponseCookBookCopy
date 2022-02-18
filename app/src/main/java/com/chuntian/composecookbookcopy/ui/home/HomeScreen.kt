@@ -17,6 +17,7 @@ import coil.annotation.ExperimentalCoilApi
 import com.chuntian.composecookbookcopy.theme.AppThemeState
 import com.chuntian.composecookbookcopy.ui.home.advancelists.AdvanceListScreen
 import com.chuntian.composecookbookcopy.ui.home.androidViews.AndroidViewScreen
+import com.chuntian.composecookbookcopy.ui.home.bottomsheet.BottomSheetScreen
 import com.chuntian.composecookbookcopy.ui.home.pager.PagerScreen
 import com.chuntian.composecookbookcopy.ui.home.constrainLayout.ConstrainLayoutScreen
 import com.chuntian.composecookbookcopy.ui.home.customFling.CustomFlingScreen
@@ -98,6 +99,9 @@ fun HomeScreen(
             }
             composable(PATH.HOME_PULL_REFRESH_DEMOS){
                 SwipeRefreshScreen(onBack = onBack)
+            }
+            composable(PATH.HOME_BOTTOM_SHEETS){
+                BottomSheetScreen(onBack = onBack)
             }
         }
     }
