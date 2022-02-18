@@ -28,6 +28,7 @@ import com.chuntian.composecookbookcopy.ui.home.modifiers.ModifiersScreen
 import com.chuntian.composecookbookcopy.ui.home.motionLayout.MotionLayoutScree
 import com.chuntian.composecookbookcopy.ui.home.renderScript.RenderScriptScreen
 import com.chuntian.composecookbookcopy.ui.home.root.HomeRoot
+import com.chuntian.composecookbookcopy.ui.home.swipefresh.SwipeRefreshScreen
 import com.chuntian.composecookbookcopy.ui.home.tabs.TabsScreen
 import com.chuntian.composecookbookcopy.utils.CodingScreen
 import com.chuntian.composecookbookcopy.utils.LocalNavControl
@@ -94,6 +95,9 @@ fun HomeScreen(
             }
             composable(PATH.HOME_TAB_LAYOUT){
                 TabsScreen(onBack = onBack)
+            }
+            composable(PATH.HOME_PULL_REFRESH_DEMOS){
+                SwipeRefreshScreen(onBack = onBack)
             }
         }
     }
