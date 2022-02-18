@@ -79,6 +79,7 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":theme"))
     implementation(project(":demo:youtube"))
+    implementation(project(":demo:instagram"))
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar"))))
     implementation("com.google.android.libraries.maps:maps:3.1.0-beta")
 //    implementation("com.mrtan.renderscript-toolkit:renderscript-toolkit:1.0")
