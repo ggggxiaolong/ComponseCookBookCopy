@@ -3,7 +3,6 @@ package com.chuntian.composecookbookcopy.ui.home.bottomsheet
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.FavoriteBorder
@@ -14,6 +13,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SmallTopAppBar
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -24,8 +24,8 @@ import androidx.compose.ui.unit.dp
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
-import kotlinx.coroutines.CoroutineScope
 import com.chuntian.data.R
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -85,7 +85,6 @@ fun SheetContent(
                 }, modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp)
-                    .height(56.dp)
             ) {
                 Text(text = "Navigation Drawer")
             }
@@ -102,7 +101,6 @@ fun SheetContent(
                 }, modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp)
-                    .height(56.dp)
             ) {
                 Text(text = "Bottom Sheet")
             }
@@ -116,7 +114,6 @@ fun SheetContent(
                 }, modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp)
-                    .height(56.dp)
             ) {
                 Text(text = "Modal Bottom sheet")
             }
@@ -130,7 +127,6 @@ fun SheetContent(
                 }, modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp)
-                    .height(56.dp)
             ) {
                 Text(text = "Modal Bottom sheet Full")
             }

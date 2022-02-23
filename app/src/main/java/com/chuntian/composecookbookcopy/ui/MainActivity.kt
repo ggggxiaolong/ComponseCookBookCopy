@@ -33,16 +33,17 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.view.WindowCompat
 import com.chuntian.composecookbookcopy.R
 import com.chuntian.composecookbookcopy.theme.AppThemeState
 import com.chuntian.composecookbookcopy.ui.home.HomeScreen
 import com.chuntian.composecookbookcopy.ui.home.root.PalletMenu
+import com.chuntian.composecookbookcopy.ui.widgets.WidgetsScreen
 import com.chuntian.composecookbookcopy.utils.IOScope
 import com.chuntian.composecookbookcopy.utils.LocalThemeState
 import com.chuntian.composecookbookcopy.utils.RotateIcon
 import com.chuntian.composecookbookcopy.utils.TestTags
 import com.chuntian.data.db.DB
-import com.chuntian.data.db.Theme
 import com.chuntian.theme.ColorPallet
 import com.chuntian.theme.ComposeCookBookCopyTheme
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -50,7 +51,6 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.guru.fontawesomecomposelib.FaIcon
 import com.guru.fontawesomecomposelib.FaIconType
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -185,10 +185,7 @@ fun HomeScreenContent(
                         appThemeState = appThemeState,
                         homeNavigateState = homeNavigateState
                     )
-                    BottomNavType.WIDGETS -> HomeScreen(
-                        appThemeState = appThemeState,
-                        homeNavigateState = homeNavigateState
-                    )
+                    BottomNavType.WIDGETS -> WidgetsScreen()
                     BottomNavType.ANIMATION -> HomeScreen(
                         appThemeState = appThemeState,
                         homeNavigateState = homeNavigateState
@@ -269,7 +266,7 @@ fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
             appThemeState.value = newData
             coroutineScope.launch {
                 chooseColorBottomModalState.hide()
-                withContext(Dispatchers.IO){
+                withContext(Dispatchers.IO) {
                     DB.instance().themeDao().save(newData.toTheme())
                 }
             }
