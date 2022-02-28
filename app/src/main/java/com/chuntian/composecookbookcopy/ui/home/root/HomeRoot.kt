@@ -113,7 +113,7 @@ fun HomeRootScreenListView(
             contentColor = MaterialTheme.colorScheme.onPrimary
         ) {
             Text(
-                text = homeScreenItems.name,
+                text = homeScreenItems.value,
                 modifier = Modifier.padding(8.dp),
                 style = MaterialTheme.typography.bodyLarge
             )
@@ -122,15 +122,11 @@ fun HomeRootScreenListView(
         Button(
             onClick = { homeRootItemClicked(homeScreenItems, controller) },
             modifier = Modifier
-                .padding(8.dp)
                 .fillMaxWidth()
-                .testTag("button-${homeScreenItems.name}")
+                .padding(8.dp)
+                .testTag("button-${homeScreenItems.value}")
         ) {
-            Text(
-                text = homeScreenItems.name,
-                modifier = Modifier.padding(8.dp),
-                style = MaterialTheme.typography.bodyMedium
-            )
+            Text(text = homeScreenItems.value)
         }
     }
 }

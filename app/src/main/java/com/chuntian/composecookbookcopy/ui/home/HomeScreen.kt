@@ -57,10 +57,21 @@ fun HomeScreen(
             composable(PATH.HOME_DIALOGS) {
                 DialogScreen(onBack)
             }
-            composable(PATH.HOME_LIST) {
+            composable(PATH.HOME_VERTICAL_LIST) {
                 ListScreen(
-                    type = it.arguments?.getString("type")?.uppercase()
-                        ?: ListViewType.VERTICAL.name,
+                    type = ListViewType.VERTICAL.name,
+                    onBack = onBack
+                )
+            }
+            composable(PATH.HOME_HORIZONTAL_LIST) {
+                ListScreen(
+                    type = ListViewType.HORIZONTAL.name,
+                    onBack = onBack
+                )
+            }
+            composable(PATH.HOME_GRID_LIST) {
+                ListScreen(
+                    type = ListViewType.GRID.name,
                     onBack = onBack
                 )
             }

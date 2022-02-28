@@ -71,7 +71,7 @@ fun VerticalScreenView(items: List<TemplateScreenItems>) {
             Button(
                 onClick = { templateRootScreenItemClicked(item, control) },
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxWidth()
                     .padding(8.dp)
             ) {
                 Text(text = item.value)

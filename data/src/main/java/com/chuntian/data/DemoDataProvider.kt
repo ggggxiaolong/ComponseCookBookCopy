@@ -324,24 +324,7 @@ object DemoDataProvider {
         )
     )
 
-    val homeScreenListItems = listOf(
-        HomeScreenItems.ListView("Vertical"),
-        HomeScreenItems.ListView("Horizontal"),
-        HomeScreenItems.ListView("Grid"),
-        HomeScreenItems.Modifiers,
-        HomeScreenItems.Layouts,
-        HomeScreenItems.RenderScript,
-        HomeScreenItems.ConstrainsLayout,
-        HomeScreenItems.MotionLayout,
-        HomeScreenItems.AdvanceLists,
-        HomeScreenItems.CustomFling,
-        HomeScreenItems.AndroidView,
-        HomeScreenItems.Pager,
-        HomeScreenItems.Dialogs,
-        HomeScreenItems.TabLayout,
-        HomeScreenItems.BottomSheets,
-        HomeScreenItems.PullRefresh,
-    )
+    val homeScreenListItems = HomeScreenItems.values().toList()
 
     val templateScreenListItems = TemplateScreenItems.values().toList()
 

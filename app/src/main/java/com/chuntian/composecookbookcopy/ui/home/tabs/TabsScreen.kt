@@ -10,6 +10,7 @@ import androidx.compose.material.TabRow
 import androidx.compose.material.TabRowDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -41,8 +42,10 @@ fun TabsScreen(onBack: () -> Unit) {
     val scope = rememberCoroutineScope()
     HomeScaffold(title = "Tabs", onBack = onBack) {
         Column {
-            TabRow(selectedTabIndex = pagerState.currentPage,
+            TabRow(
+                selectedTabIndex = pagerState.currentPage,
                 backgroundColor = MaterialTheme.colorScheme.background,
+                contentColor = contentColorFor(backgroundColor = MaterialTheme.colorScheme.background),
                 indicator = { position ->
                     TabRowDefaults.Indicator(Modifier.pagerTabIndicatorOffset(pagerState, position))
                 }) {
