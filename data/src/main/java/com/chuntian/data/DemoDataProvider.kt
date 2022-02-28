@@ -2,6 +2,7 @@ package com.chuntian.data
 
 import com.chuntian.data.model.HomeScreenItems
 import com.chuntian.data.model.Item
+import com.chuntian.data.model.TemplateScreenItems
 import com.chuntian.data.model.Tweet
 
 object DemoDataProvider {
@@ -341,6 +342,8 @@ object DemoDataProvider {
         HomeScreenItems.BottomSheets,
         HomeScreenItems.PullRefresh,
     )
+
+    val templateScreenListItems = TemplateScreenItems.values().toList()
 
     const val longText =
         "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae"

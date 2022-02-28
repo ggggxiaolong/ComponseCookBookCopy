@@ -99,7 +99,7 @@ fun AnimateVisibilitySlideInOut() {
             .padding(12.dp)
             .width(200.dp)
             .height(60.dp)
-            .background(Green200)
+            .background(MaterialTheme.colorScheme.primaryContainer)
             .clickable { visibility = !visibility }) {
         AnimatedVisibility(
             visible = visibility,
@@ -124,7 +124,7 @@ fun VisibilityAnimationShrink() {
             .padding(12.dp)
             .width(200.dp)
             .height(60.dp)
-            .background(Green200)
+            .background(MaterialTheme.colorScheme.primaryContainer)
             .clickable { visibility = !visibility }) {
         AnimatedVisibility(
             visible = visibility,

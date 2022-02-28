@@ -39,6 +39,7 @@ import com.chuntian.composecookbookcopy.theme.AppThemeState
 import com.chuntian.composecookbookcopy.ui.animation.AnimationScreen
 import com.chuntian.composecookbookcopy.ui.home.HomeScreen
 import com.chuntian.composecookbookcopy.ui.home.root.PalletMenu
+import com.chuntian.composecookbookcopy.ui.templates.TemplateScreen
 import com.chuntian.composecookbookcopy.ui.widgets.WidgetsScreen
 import com.chuntian.composecookbookcopy.utils.IOScope
 import com.chuntian.composecookbookcopy.utils.LocalThemeState
@@ -192,8 +193,7 @@ fun HomeScreenContent(
                         appThemeState = appThemeState,
                         homeNavigateState = homeNavigateState
                     )
-                    BottomNavType.TEMPLATE -> HomeScreen(
-                        appThemeState = appThemeState,
+                    BottomNavType.TEMPLATE -> TemplateScreen(
                         homeNavigateState = homeNavigateState
                     )
                 }
