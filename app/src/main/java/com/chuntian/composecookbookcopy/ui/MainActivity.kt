@@ -318,11 +318,11 @@ fun BaseView(
     content: @Composable () -> Unit
 ) {
     val systemUiController = rememberSystemUiController()
-    systemUiController.setSystemBarsColor(MaterialTheme.colorScheme.surface)
     ComposeCookBookCopyTheme(
         darkTheme = appThemeState.darkTheme,
         colorPallet = appThemeState.pallet
     ) {
+        systemUiController.setSystemBarsColor(MaterialTheme.colorScheme.surface)
         content()
     }
 }

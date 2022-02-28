@@ -40,6 +40,7 @@ import com.chuntian.composecookbookcopy.ui.home.HomeScaffold
 import com.chuntian.composecookbookcopy.utils.TestTags
 import com.chuntian.data.DemoDataProvider
 import com.chuntian.data.model.Item
+import com.chuntian.theme.helper.TextFieldDefaultsMaterial
 import io.iamjosephmj.flinger.bahaviours.StockFlingBehaviours
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -257,6 +258,7 @@ fun BuildCustomItems(
                                 imeAction = ImeAction.Done,
                                 keyboardType = KeyboardType.Number,
                             ),
+                            colors = TextFieldDefaultsMaterial.outlinedTextFieldColors(),
                             onValueChange = {
                                 when {
                                     it.count { c -> c == '.' } > 1 -> {}

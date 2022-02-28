@@ -19,6 +19,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.chuntian.theme.helper.TextFieldDefaultsMaterial
 import com.google.accompanist.insets.navigationBarsWithImePadding
 import java.net.PasswordAuthentication
 
@@ -38,7 +39,8 @@ fun TextInputs() {
         onValueChange = { v -> text = v },
         modifier = textModifier,
         label = { Text(text = "Label") },
-        placeholder = { Text(text = "placeholder") }
+        placeholder = { Text(text = "placeholder") },
+        colors = TextFieldDefaultsMaterial.textFieldColors(),
     )
 
     OutlinedTextField(
@@ -48,7 +50,8 @@ fun TextInputs() {
         label = { Text(text = "Password") },
         placeholder = { Text(text = "12334444") },
         visualTransformation = PasswordVisualTransformation(),
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+        colors = TextFieldDefaultsMaterial.outlinedTextFieldColors(),
     )
     OutlinedTextField(
         value = text,
@@ -59,7 +62,8 @@ fun TextInputs() {
         visualTransformation = PasswordVisualTransformation(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
         leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = null) },
-        trailingIcon = { Icon(imageVector = Icons.Default.Edit, contentDescription = null) }
+        trailingIcon = { Icon(imageVector = Icons.Default.Edit, contentDescription = null) },
+        colors = TextFieldDefaultsMaterial.outlinedTextFieldColors(),
     )
     var numberText by remember { mutableStateOf(TextFieldValue("")) }
     OutlinedTextField(
@@ -69,6 +73,7 @@ fun TextInputs() {
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         label = { Text(text = "Phone number") },
         placeholder = { Text(text = "88888888") },
+        colors = TextFieldDefaultsMaterial.outlinedTextFieldColors(),
     )
 }
 

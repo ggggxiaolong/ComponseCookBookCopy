@@ -32,6 +32,8 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.chuntian.composecookbookcopy.ui.widgets.HorizontalDottedProgressBar
 import com.chuntian.composecookbookcopy.utils.IOScope
+import com.chuntian.theme.components.FaIcon2
+import com.chuntian.theme.helper.TextFieldDefaultsMaterial
 import com.guru.fontawesomecomposelib.FaIcon
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -95,11 +97,11 @@ fun LoginScreen() {
                     value = email,
                     onValueChange = { email = it },
                     leadingIcon = {
-                        FaIcon(
+                        FaIcon2(
                             faIcon = FaIcons.Envelope,
-                            tint = MaterialTheme.colorScheme.onSurface.copy(alpha = LocalContentAlpha.current)
                         )
                     },
+                    colors = TextFieldDefaultsMaterial.outlinedTextFieldColors(),
                     maxLines = 1,
                     modifier = Modifier.fillMaxWidth(),
                     keyboardOptions = KeyboardOptions(
@@ -117,21 +119,20 @@ fun LoginScreen() {
                     value = password,
                     onValueChange = { password = it },
                     leadingIcon = {
-                        FaIcon(
+                        FaIcon2(
                             faIcon = FaIcons.Key,
-                            tint = MaterialTheme.colorScheme.onSurface.copy(alpha = LocalContentAlpha.current)
                         )
                     },
                     trailingIcon = {
-                        FaIcon(
+                        FaIcon2(
                             faIcon = if (showPass) FaIcons.Eye else FaIcons.EyeSlash,
-                            tint = MaterialTheme.colorScheme.onSurface.copy(alpha = LocalContentAlpha.current),
                             modifier = Modifier.clickable(
                                 indication = null,
                                 interactionSource = remember { MutableInteractionSource() },
                                 onClick = { showPass = !showPass })
                         )
                     },
+                    colors = TextFieldDefaultsMaterial.outlinedTextFieldColors(),
                     maxLines = 1,
                     modifier = Modifier.fillMaxWidth(),
                     keyboardOptions = KeyboardOptions(
@@ -180,9 +181,9 @@ fun LoginScreen() {
             }
             item {
                 OutlinedButton(onClick = { }) {
-                    FaIcon(
+                    FaIcon2(
                         faIcon = FaIcons.Facebook,
-                        tint = MaterialTheme.colorScheme.primary
+//                        tint = MaterialTheme.colorScheme.primary
                     )
                     Text(
                         text = "Sign in with Facebook",
@@ -195,9 +196,9 @@ fun LoginScreen() {
             }
             item {
                 OutlinedButton(onClick = { }) {
-                    FaIcon(
+                    FaIcon2(
                         faIcon = FaIcons.Google,
-                        tint = MaterialTheme.colorScheme.primary
+//                        tint = MaterialTheme.colorScheme.primary
                     )
                     Text(
                         text = "Sign in with Gmail",
