@@ -39,3 +39,16 @@ enum class HomeScreenItems(val value: String, val path: String) {
     MotionLayout("Motion Layout", PATH.HOME_MOTION_LAYOUT),
     RenderScript("RenderScript", PATH.HOME_RENDER_SCRIPT),
 }
+
+enum class DemoItems(val value: String, val path: String) {
+    Ins("Instagram", PATH.DEMO_INS),
+    Twitter("Twitter", PATH.DEMO_TWITTER),
+    Gmail("Gmail", PATH.DEMO_GMAIL),
+    Youtube("Youtube", PATH.DEMO_YOUTUBE),
+    Spotify("Spotify", PATH.DEMO_SPOTIFY),
+    Crypto("CryptoApp+Mvvm", PATH.DEMO_CRYPTO),
+    Movies("MoviesApp+Mvvm", PATH.DEMO_MOVIES),
+    Dating("DatingApp", PATH.DEMO_DATING),
+    Tiktok("Tiktok", PATH.DEMO_TIKTOK),
+    Paint("Paint", PATH.DEMO_PAINT),
+}

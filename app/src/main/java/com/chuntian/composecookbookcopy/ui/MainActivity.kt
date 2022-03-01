@@ -37,6 +37,7 @@ import androidx.core.view.WindowCompat
 import com.chuntian.composecookbookcopy.R
 import com.chuntian.composecookbookcopy.theme.AppThemeState
 import com.chuntian.composecookbookcopy.ui.animation.AnimationScreen
+import com.chuntian.composecookbookcopy.ui.demoapp.DemoAppScree
 import com.chuntian.composecookbookcopy.ui.home.HomeScreen
 import com.chuntian.composecookbookcopy.ui.home.root.PalletMenu
 import com.chuntian.composecookbookcopy.ui.templates.TemplateScreen
@@ -189,8 +190,7 @@ fun HomeScreenContent(
                     )
                     BottomNavType.WIDGETS -> WidgetsScreen()
                     BottomNavType.ANIMATION -> AnimationScreen()
-                    BottomNavType.DEMO_UI -> HomeScreen(
-                        appThemeState = appThemeState,
+                    BottomNavType.DEMO_UI -> DemoAppScree(
                         homeNavigateState = homeNavigateState
                     )
                     BottomNavType.TEMPLATE -> TemplateScreen(

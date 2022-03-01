@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.chuntian.composecookbookcopy.ui.templates.login.LoginScreen
+import com.chuntian.composecookbookcopy.ui.templates.profile.ProfileScree
 import com.chuntian.composecookbookcopy.ui.templates.root.TemplateRootScreen
 import com.chuntian.composecookbookcopy.utils.CodingScreen
 import com.chuntian.composecookbookcopy.utils.LocalNavControl
@@ -24,6 +25,7 @@ fun TemplateScreen(homeNavigateState: MutableState<Boolean>) {
             composable(PATH.TEMPLATE) { TemplateRootScreen() }
             composable(PATH.TEMPLATE_EMPTY_SCREEN) { CodingScreen(onBack) }
             composable(PATH.TEMPLATE_LOGIN) { LoginScreen() }
+            composable(PATH.TEMPLATE_PROFILES){ ProfileScree() }
         }
     }
 }

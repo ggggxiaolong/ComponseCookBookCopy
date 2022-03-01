@@ -159,10 +159,10 @@ fun PalletMenu(
         Column(horizontalAlignment = Alignment.Start) {
             if (showMenu) {
                 val list = listOf(
-                    Triple(Green500, "Green", ColorPallet.GREEN),
-                    Triple(Purple700, "Purple", ColorPallet.PURPLE),
-                    Triple(Orange500, "Orange", ColorPallet.ORANGE),
-                    Triple(Blue500, "Blue", ColorPallet.BLUE),
+                    Triple(green_theme_light_primary, "Green", ColorPallet.GREEN),
+                    Triple(purple_theme_light_primary, "Purple", ColorPallet.PURPLE),
+                    Triple(orange_theme_light_primary, "Orange", ColorPallet.ORANGE),
+                    Triple(blue_theme_light_primary, "Blue", ColorPallet.BLUE),
                 )
                 for (item in list) {
                     MenuItem(color = item.first, name = item.second) {
