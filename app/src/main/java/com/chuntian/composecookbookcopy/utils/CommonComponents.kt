@@ -10,10 +10,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
@@ -96,6 +93,7 @@ fun RotateIcon(
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CodingScreen(onBack: () -> Unit) {
     Scaffold(topBar = {
