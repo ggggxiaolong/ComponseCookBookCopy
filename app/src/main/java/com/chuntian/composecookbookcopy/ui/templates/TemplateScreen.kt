@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.chuntian.composecookbookcopy.ui.templates.charts.ChartsScreen
 import com.chuntian.composecookbookcopy.ui.templates.login.LoginScreen
+import com.chuntian.composecookbookcopy.ui.templates.menu.CascadeMenuScreen
 import com.chuntian.composecookbookcopy.ui.templates.onBoarding.OnBoardingScreen
 import com.chuntian.composecookbookcopy.ui.templates.payCard.PayCardScreen
 import com.chuntian.composecookbookcopy.ui.templates.profile.ProfileScree
@@ -32,6 +33,7 @@ fun TemplateScreen(homeNavigateState: MutableState<Boolean>) {
             composable(PATH.TEMPLATE_ON_BOARDING) { OnBoardingScreen() }
             composable(PATH.TEMPLATE_CHARTS) { ChartsScreen() }
             composable(PATH.TEMPLATE_PAY_CARD) { PayCardScreen() }
+            composable(PATH.TEMPLATE_MENU){CascadeMenuScreen()}
         }
     }
 }
