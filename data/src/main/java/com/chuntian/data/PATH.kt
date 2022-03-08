@@ -28,7 +28,7 @@ object PATH {
     const val TEMPLATE_ON_BOARDING = "/template/onBoarding"
     const val TEMPLATE_CHARTS = "/template/chart"
     const val TEMPLATE_PAY_CARD = "/template/payCard"
-    const val TEMPLATE_PIN = "/template/pin"
+    const val TEMPLATE_DRAW_TIGER = "/template/drawTiger"
     const val TEMPLATE_EMPTY_SCREEN = "/template/emptyScreen"
     const val TEMPLATE_SETTING = "/template/setting"
     const val TEMPLATE_LOADERS = "/template/loaders"

@@ -8,7 +8,7 @@ enum class TemplateScreenItems(val value: String, val path: String) {
     OnBoarding("OnBoarding", PATH.TEMPLATE_ON_BOARDING),
     Charts("Charts", PATH.TEMPLATE_CHARTS),
     PayCard("Adding Payment Card", PATH.TEMPLATE_PAY_CARD),
-    Pin("Pin Lock/BioMetric", PATH.TEMPLATE_PIN),
+    DrawTiger("Draw tiger", PATH.TEMPLATE_DRAW_TIGER),
     EmptyScreen("EmptyScreen", PATH.TEMPLATE_EMPTY_SCREEN),
     Setting("Setting", PATH.TEMPLATE_SETTING),
     Loaders("Loaders", PATH.TEMPLATE_LOADERS),
