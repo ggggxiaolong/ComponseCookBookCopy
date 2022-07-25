@@ -1,6 +1,5 @@
 package com.chuntian.demo.instagram.ui.posts
 
-import FaIcons
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -24,6 +23,7 @@ import com.chuntian.data.model.Tweet
 import com.chuntian.demo.instagram.ui.profile.ProfileSection
 import com.chuntian.demo.instagram.ui.profile.ProfileSectionSizes
 import com.guru.fontawesomecomposelib.FaIcon
+import com.guru.fontawesomecomposelib.FaIcons
 
 @Composable
 fun PostItem(

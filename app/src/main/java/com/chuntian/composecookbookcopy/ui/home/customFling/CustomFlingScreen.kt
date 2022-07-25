@@ -5,9 +5,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
@@ -17,6 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.*
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.livedata.observeAsState
@@ -42,6 +43,7 @@ import com.chuntian.data.DemoDataProvider
 import com.chuntian.data.model.Item
 import com.chuntian.theme.helper.TextFieldDefaultsMaterial
 import io.iamjosephmj.flinger.bahaviours.StockFlingBehaviours
+import timber.log.Timber
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -68,13 +70,14 @@ fun CustomFlingScreen(onBack: () -> Unit) {
             }
         )
     }, content = {
+//        it.toString()
         SettingView(showDialog, model)
-        CustomFlingView(model)
+        CustomFlingView(model, it)
     })
 }
 
 @Composable
-fun CustomFlingView(model: FlingViewModel) {
+fun CustomFlingView(model: FlingViewModel, padding: PaddingValues) {
     val list = DemoDataProvider.itemList
     val flingState = model.flingStateStore.observeAsState(FlingStateStore())
     val behavior = when (flingState.value.type) {
@@ -82,7 +85,7 @@ fun CustomFlingView(model: FlingViewModel) {
         FlingListViewTypes.NATIVE -> StockFlingBehaviours.getAndroidNativeScroll()
         FlingListViewTypes.SMOOTH -> StockFlingBehaviours.smoothScroll()
     }
-    LazyColumn(flingBehavior = behavior, modifier = Modifier.testTag(TestTags.HOME_FLING_LIST)) {
+    LazyColumn(flingBehavior = behavior, modifier = Modifier.padding(padding).testTag(TestTags.HOME_FLING_LIST)) {
         items(items = list, itemContent = { item ->
             CustomFlingItemView(item = item)
             Divider(
@@ -119,7 +122,6 @@ fun CustomFlingItemView(item: Item) {
 @OptIn(
     ExperimentalComposeUiApi::class,
     ExperimentalMaterial3Api::class,
-    ExperimentalFoundationApi::class
 )
 @Composable
 fun SettingView(showDialog: MutableState<Boolean>, model: FlingViewModel) {
@@ -129,6 +131,7 @@ fun SettingView(showDialog: MutableState<Boolean>, model: FlingViewModel) {
     val items = FlingListViewTypes.values().toList()
     val stateStore = model.flingStateStore.observeAsState(FlingStateStore())
     val selectItem = remember { mutableStateOf(stateStore.value.type) }
+    Timber.i(items.toString())
     if (showDialog.value) {
         Dialog(
             onDismissRequest = onClose,
@@ -136,7 +139,7 @@ fun SettingView(showDialog: MutableState<Boolean>, model: FlingViewModel) {
         ) {
             HomeScaffold(title = "Setting", onBack = onClose) {
                 Column(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier.padding(it).fillMaxSize(),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Card(
@@ -176,7 +179,6 @@ fun SettingView(showDialog: MutableState<Boolean>, model: FlingViewModel) {
 
 class CustomItem(val name: String, val state: MutableState<String>)
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun BuildCustomItems(
     flingCopyStore: FlingStateStore,
@@ -237,7 +239,7 @@ fun BuildCustomItems(
 
     if (selectItem.value == FlingListViewTypes.CUSTOM) {
         LazyVerticalGrid(
-            cells = GridCells.Fixed(3),
+            columns = GridCells.Fixed(3),
             modifier = Modifier.clickable(
                 indication = null,
                 interactionSource = remember { MutableInteractionSource() },

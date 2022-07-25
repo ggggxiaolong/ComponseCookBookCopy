@@ -167,7 +167,7 @@ data class Command(
          * @param commandString string containing the path data
          */
         internal fun generateType(commandString: String): Int {
-            return commandString[0].toInt()
+            return commandString[0].code
         }
 
         /**
@@ -176,7 +176,7 @@ data class Command(
          */
         internal fun generateCoordinates(commandString: String): FloatArray {
 
-            val type = commandString[0].toUpperCase().toInt()
+            val type = commandString[0].uppercaseChar().code
 
             // get all coordinates as double array list
             val coordinates =

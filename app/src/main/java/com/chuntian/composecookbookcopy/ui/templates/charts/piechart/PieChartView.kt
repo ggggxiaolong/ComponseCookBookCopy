@@ -23,7 +23,7 @@ import kotlin.random.Random
 @Composable
 fun PieChartView(onBack: () -> Unit) {
     HomeScaffold(title = "Pie Chart", onBack = onBack) {
-        Column {
+        Column(modifier = Modifier.padding(it)) {
             Card(
                 modifier = Modifier
                     .fillMaxWidth()

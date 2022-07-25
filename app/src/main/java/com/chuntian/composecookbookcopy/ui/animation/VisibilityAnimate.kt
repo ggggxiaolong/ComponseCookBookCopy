@@ -76,7 +76,8 @@ fun AnimateVisibilityDifferentChildAnimate() {
         Column(horizontalAlignment = Alignment.Start) {
             colors.forEach { color ->
                 Card(
-                    containerColor = color,
+//                    containerColor = color,
+                    colors = CardDefaults.cardColors(containerColor = color),
                     modifier = Modifier
                         .size(80.dp)
                         .padding(8.dp)

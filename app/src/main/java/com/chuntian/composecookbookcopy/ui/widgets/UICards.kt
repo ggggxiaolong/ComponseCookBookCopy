@@ -1,6 +1,5 @@
 package com.chuntian.composecookbookcopy.ui.widgets
 
-import android.graphics.Rect
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -36,9 +35,10 @@ fun UICards() {
         modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth(),
-        containerColor = MaterialTheme.colorScheme.primary,
+//        containerColor = MaterialTheme.colorScheme.primary,
         shape = RoundedCornerShape(topStart = 16.dp, bottomEnd = 16.dp),
-        contentColor = MaterialTheme.colorScheme.onPrimary,
+//        contentColor = ,
+//        colors = CardDefaults.cardColors(contentColor = MaterialTheme.colorScheme.onPrimary, containerColor = ),
     ) {
         Column {
             Text(

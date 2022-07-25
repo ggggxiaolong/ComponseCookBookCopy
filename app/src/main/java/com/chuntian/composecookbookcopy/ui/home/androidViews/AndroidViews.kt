@@ -100,6 +100,7 @@ fun rememberMapViewWithLifecycle(context: Context): MapView {
                 Lifecycle.Event.ON_PAUSE -> mapView.onPause()
                 Lifecycle.Event.ON_STOP -> mapView.onStop()
                 Lifecycle.Event.ON_DESTROY -> mapView.onDestroy()
+                else -> {}
             }
         }
     }

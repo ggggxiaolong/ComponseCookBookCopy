@@ -11,15 +11,15 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,7 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.annotation.ExperimentalCoilApi
-import coil.compose.rememberImagePainter
+import coil.compose.rememberAsyncImagePainter
 import com.chuntian.data.DemoDataProvider
 import com.chuntian.data.model.Tweet
 import com.chuntian.demo.youtube.components.YoutubeChip
@@ -47,7 +47,7 @@ fun AnimateListView() {
     Column {
         var animationIndex by remember { mutableStateOf(0) }
         LazyVerticalGrid(
-            cells = GridCells.Fixed(3),
+            columns = GridCells.Fixed(3),
             modifier = Modifier.padding(vertical = 12.dp)
         ) {
             items(6) {
@@ -70,7 +70,7 @@ fun AnimateListView() {
 @ExperimentalCoilApi
 @Composable
 fun AnimatedListItem(item: Tweet, itemIndex: Int, animationIndex: Int) {
-    val painter = rememberImagePainter(data = "https://picsum.photos/id/${itemIndex + 1}/200/200")
+    val painter = rememberAsyncImagePainter(model = "https://picsum.photos/id/${itemIndex + 1}/200/200")
     val animateModifier = when (animationIndex) {
         0 -> {//Fade
             val animatedProgress = remember { Animatable(initialValue = 0f) }

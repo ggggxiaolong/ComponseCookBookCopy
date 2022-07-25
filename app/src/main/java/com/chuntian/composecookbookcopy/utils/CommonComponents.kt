@@ -1,6 +1,5 @@
 package com.chuntian.composecookbookcopy.utils
 
-import FaIcons
 import androidx.annotation.DrawableRes
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -31,6 +30,7 @@ import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.guru.fontawesomecomposelib.FaIcon
+import com.guru.fontawesomecomposelib.FaIcons
 
 @Composable
 fun HeadingSection(modifier: Modifier = Modifier, title: String = "", subtitle: String = "") {
@@ -102,9 +102,10 @@ fun CodingScreen(onBack: () -> Unit) {
                 Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = null)
             }
         })
-    }, content = {
+    }, content = { padding ->
         Column(
             modifier = Modifier
+                .padding(padding)
                 .fillMaxWidth()
         ) {
             val composition by rememberLottieComposition(spec = LottieCompositionSpec.Asset("working.json"))
@@ -126,7 +127,8 @@ fun ImageChip(
     selected: Boolean = false,
     onClick: () -> Unit = {}
 ) {
-    val border = if (enabled) BorderStroke(width = 1.dp, color = MaterialTheme.colorScheme.primary) else null
+    val border =
+        if (enabled) BorderStroke(width = 1.dp, color = MaterialTheme.colorScheme.primary) else null
     val colors =
         if (enabled && !selected) ButtonDefaults.outlinedButtonColors() else ButtonDefaults.buttonColors()
     val contentColor = colors.contentColor(enabled = enabled).value
@@ -144,7 +146,10 @@ fun ImageChip(
         contentColor = contentColor,
         border = border
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(horizontal = 8.dp)) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(horizontal = 8.dp)
+        ) {
             Image(
                 painter = painterResource(id = image),
                 contentDescription = null,

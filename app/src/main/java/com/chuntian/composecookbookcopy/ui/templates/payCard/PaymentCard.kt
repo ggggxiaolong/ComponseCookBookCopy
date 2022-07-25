@@ -58,7 +58,7 @@ fun PaymentCard(
             Box(modifier = Modifier.fillMaxSize()) {
                 AnimatedVisibility(visible = !showBack) {
                     ConstraintLayout(modifier = Modifier.fillMaxSize()) {
-                        val (symbol, logo, cardName, cardNameLabel, number, expiry, expiryLabel) = createRefs()
+                        val (symbol, logo, cardName, cardNameLabel, num, expiry, expiryLabel) = createRefs()
                         Image(
                             painter = painterResource(id = com.chuntian.data.R.drawable.card_symbol),
                             contentDescription = null,
@@ -92,7 +92,7 @@ fun PaymentCard(
                             modifier = Modifier
                                 .animateContentSize(spring())
                                 .padding(vertical = 16.dp, horizontal = 16.dp)
-                                .constrainAs(number) {
+                                .constrainAs(num) {
                                     linkTo(start = parent.start, end = parent.end)
                                     linkTo(top = parent.top, bottom = parent.bottom)
                                 }

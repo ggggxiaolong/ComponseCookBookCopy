@@ -28,7 +28,7 @@ fun PagerScreen(onBack: () -> Unit) {
     HomeScaffold(title = "Pager", onBack = onBack) {
         val pagerSate = rememberPagerState(initialPage = 1)
         val pagerSate2 = rememberPagerState(initialPage = 1)
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.padding(it).fillMaxSize()) {
             HorizontalPager(
                 count = items.size,
                 state = pagerSate,

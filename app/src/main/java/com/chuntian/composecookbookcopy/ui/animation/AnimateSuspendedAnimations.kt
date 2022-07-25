@@ -8,10 +8,7 @@ import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Card
-import androidx.compose.material3.Divider
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.consumeAllChanges
@@ -42,7 +39,7 @@ fun SimpleDismissAnimateView() {
     val animate = remember { Animatable(0f) }
     animate.updateBounds(-100f, 100f)
     Card(
-        containerColor = MaterialTheme.colorScheme.tertiary,
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.tertiary) ,
         modifier = Modifier
             .size(100.dp)
             .offset(x = animate.value.dp)
@@ -66,7 +63,7 @@ fun PointerInputAnimate() {
             orientation = Orientation.Horizontal,
             state = rememberDraggableState { delta -> offsetX += delta }
         )
-    Card(containerColor = MaterialTheme.colorScheme.primaryContainer, modifier = modifier) {}
+    Card(modifier = modifier) {}
 }
 
 @Composable
@@ -92,7 +89,7 @@ fun DraggableCardAnimate() {
                         offsetX = startX
                         offsetY = startY
                     }) { change, dragAmount ->
-                        change.consumeAllChanges()
+                        change.consume()
                         offsetX += dragAmount.x
                         offsetY += dragAmount.y
                     }

@@ -12,9 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.chuntian.composecookbookcopy.utils.TestTags
-import com.google.accompanist.insets.ExperimentalAnimatedInsets
 
-@OptIn(ExperimentalAnimatedInsets::class)
 @Composable
 fun WidgetsScreen() {
     Scaffold(
@@ -24,7 +22,7 @@ fun WidgetsScreen() {
     ) {
         LazyColumn(
             state = rememberLazyListState(),
-            modifier = Modifier.padding(horizontal = 8.dp)
+            modifier = Modifier.padding(start = 8.dp, end = 8.dp, bottom = it.calculateBottomPadding())
         ) {
             item { AllButtonsView() }
             item { Chips() }

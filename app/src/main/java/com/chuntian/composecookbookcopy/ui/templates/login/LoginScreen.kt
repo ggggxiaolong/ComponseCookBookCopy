@@ -1,6 +1,5 @@
 package com.chuntian.composecookbookcopy.ui.templates.login
 
-import FaIcons
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -8,7 +7,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -34,7 +32,7 @@ import com.chuntian.composecookbookcopy.ui.widgets.HorizontalDottedProgressBar
 import com.chuntian.composecookbookcopy.utils.IOScope
 import com.chuntian.theme.components.FaIcon2
 import com.chuntian.theme.helper.TextFieldDefaultsMaterial
-import com.guru.fontawesomecomposelib.FaIcon
+import com.guru.fontawesomecomposelib.FaIcons
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -42,7 +40,7 @@ import kotlinx.coroutines.launch
 @Preview
 @Composable
 fun LoginScreen() {
-    Scaffold() {
+    Scaffold { padding ->
         var email by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
         var showPass by remember { mutableStateOf(false) }

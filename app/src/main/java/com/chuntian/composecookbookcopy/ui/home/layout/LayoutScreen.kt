@@ -26,12 +26,12 @@ import androidx.compose.material3.MaterialTheme
 
 @Composable
 fun LayoutScreen(onBack: () -> Unit) {
-    HomeScaffold(title = "Layouts", onBack = onBack) { LayoutView() }
+    HomeScaffold(title = "Layouts", onBack = onBack) { LayoutView(it) }
 }
 
 @Composable
-private fun LayoutView() {
-    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+private fun LayoutView(padding: PaddingValues) {
+    Column(modifier = Modifier.padding(padding).verticalScroll(rememberScrollState())) {
         TypesOfRow()
         TypeOfColumns()
         TypeOfBox()
@@ -168,17 +168,20 @@ fun TypeOfBox() {
     Title(text = "Children with no align")
     Box(modifier = boxModifier.testTag(TestTags.HOME_LAYOUTS_BOX_NO_ALIGN)) {
         Card(
-            containerColor = Green700,
+            colors = CardDefaults.cardColors(containerColor = Green700),
+//            containerColor = Green700,
             elevation = elevation,
             modifier = Modifier.size(200.dp),
             content = {})
         Card(
-            containerColor = Green500,
+            colors = CardDefaults.cardColors(containerColor = Green500),
+//            containerColor = Green500,
             elevation = elevation,
             modifier = Modifier.size(150.dp),
             content = {})
         Card(
-            containerColor = Green200,
+            colors = CardDefaults.cardColors(containerColor = Green200),
+//            containerColor = Green200,
             elevation = elevation,
             modifier = Modifier.size(100.dp),
             content = {})
@@ -186,17 +189,23 @@ fun TypeOfBox() {
 
     Title(text = "Children with TopStart, Center BottomEnd")
     Box(modifier = boxModifier.testTag(TestTags.HOME_LAYOUTS_BOX_TOP_CENTER_AND_NO_ALIGN)) {
-        Card(containerColor = Green700, elevation = elevation, modifier = Modifier
+        Card(
+            colors = CardDefaults.cardColors(containerColor = Green700),
+            elevation = elevation, modifier = Modifier
             .size(200.dp)
             .align(
                 Alignment.TopStart
             ), content = {})
-        Card(containerColor = Green500, elevation = elevation, modifier = Modifier
+        Card(
+            colors = CardDefaults.cardColors(containerColor = Green500),
+            elevation = elevation, modifier = Modifier
             .size(150.dp)
             .align(
                 Alignment.Center
             ), content = {})
-        Card(containerColor = Green200, elevation = elevation, modifier = Modifier
+        Card(
+            colors = CardDefaults.cardColors(containerColor = Green200),
+            elevation = elevation, modifier = Modifier
             .size(100.dp)
             .align(
                 Alignment.BottomEnd
@@ -252,6 +261,6 @@ fun ConstrainLayouts() {
 @Composable
 fun PreviewLayout() {
     ComposeCookBookCopyTheme {
-        LayoutView()
+        LayoutView(PaddingValues(0.dp))
     }
 }

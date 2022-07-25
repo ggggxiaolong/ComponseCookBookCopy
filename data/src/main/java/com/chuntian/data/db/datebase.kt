@@ -8,7 +8,10 @@ data class Theme(
     @PrimaryKey val id: Int = 1,
     @ColumnInfo(name = "is_dark") val isDark: Int = 0,
     @ColumnInfo(name = "pallet") val pallet: Int = 0,
-)
+){
+    @Ignore
+    constructor():this(0)
+}
 
 @Dao
 interface ThemeDao {

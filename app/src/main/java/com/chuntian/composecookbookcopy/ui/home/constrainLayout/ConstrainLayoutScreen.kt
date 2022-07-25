@@ -31,7 +31,9 @@ import com.chuntian.data.DemoDataProvider
 @Composable
 fun ConstrainLayoutScreen(onBack: () -> Unit) {
     HomeScaffold(title = "ConstrainLayout", onBack = onBack) {
-        Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+        Column(modifier = Modifier
+            .padding(it)
+            .verticalScroll(rememberScrollState())) {
             ConstrainLayoutListItems()
             Spacer(modifier = Modifier.height(20.dp))
             ConstrainLayoutBigListItem()
@@ -125,7 +127,7 @@ fun ConstrainLayoutBigListItem() {
         .fillMaxWidth()
         .clickable { }) {
         val item = DemoDataProvider.item
-        val (image, title, subtitle, source, button) = createRefs()
+        val (image, title, subtitle, button) = createRefs()
         val isSelect = remember { mutableStateOf(false) }
         Image(painter = painterResource(id = item.imageId),
             contentScale = ContentScale.Crop,
@@ -153,7 +155,12 @@ fun ConstrainLayoutBigListItem() {
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.constrainAs(subtitle) {
                 linkTo(start = title.start, end = title.end)
-                linkTo(top = title.bottom, topMargin = 8.dp, bottom = parent.bottom, bottomMargin = 16.dp)
+                linkTo(
+                    top = title.bottom,
+                    topMargin = 8.dp,
+                    bottom = parent.bottom,
+                    bottomMargin = 16.dp
+                )
                 width = Dimension.fillToConstraints
             })
         IconButton(

@@ -30,7 +30,7 @@ enum class LineChartDemo {
 @Composable
 fun LineChartScreen(onBack: () -> Unit, type: LineChartDemo) {
     HomeScaffold(title = "Line Chart", onBack = onBack) {
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.padding(it).fillMaxSize()) {
             when (type) {
                 LineChartDemo.Live -> {
                     Card(

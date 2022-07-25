@@ -1,7 +1,5 @@
 package com.chuntian.composecookbookcopy.ui.home.dialogs
 
-import android.widget.CalendarView
-import android.widget.DatePicker
 import android.widget.TimePicker
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.compose.foundation.background
@@ -20,7 +18,6 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.chuntian.composecookbookcopy.utils.LocalThemeState
-import com.chuntian.theme.ColorPallet
 import com.chuntian.theme.R
 import java.time.LocalDate
 

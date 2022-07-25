@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import io.iamjosephmj.flinger.configs.FlingConfiguration
 import io.iamjosephmj.flinger.flings.flingBehavior
 
-enum class FlingListViewTypes(type: Int) {
+enum class FlingListViewTypes(_type: Int) {
     // Renders list with native scroll behaviour
     NATIVE(0),
 

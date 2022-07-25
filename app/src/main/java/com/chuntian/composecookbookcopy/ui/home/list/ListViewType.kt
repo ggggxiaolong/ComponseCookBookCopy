@@ -1,6 +1,6 @@
 package com.chuntian.composecookbookcopy.ui.home.list
 
-enum class ListViewType(string: String) {
+enum class ListViewType(_string: String) {
     VERTICAL("Vertical"),
     HORIZONTAL("Horizontal"),
     GRID("Grid"),

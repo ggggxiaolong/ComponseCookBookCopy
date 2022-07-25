@@ -19,8 +19,8 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun DrawTigerScreen(onBack: () -> Unit) {
-    HomeScaffold(title = "Draw Tiger", onBack = onBack) {
-        var pathList by remember{ mutableStateOf(emptyList<Path>())}
+    HomeScaffold(title = "Draw Tiger", onBack = onBack) { padding ->
+        var pathList by remember { mutableStateOf(emptyList<Path>()) }
         val res = stringArrayResource(id = R.array.tiger_path).map {
             SvgPath(it).generatePath().asComposePath()
         }
@@ -34,7 +34,7 @@ fun DrawTigerScreen(onBack: () -> Unit) {
         val color = MaterialTheme.colorScheme.primary
         Canvas(
             modifier = Modifier
-                .padding(top = 50.dp)
+                .padding(top = padding.calculateTopPadding() + 50.dp)
                 .fillMaxSize(),
             onDraw = {
                 pathList.forEach {

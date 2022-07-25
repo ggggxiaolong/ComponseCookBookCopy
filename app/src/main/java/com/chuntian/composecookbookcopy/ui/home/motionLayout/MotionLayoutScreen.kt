@@ -24,7 +24,7 @@ import com.chuntian.data.AlbumsDataProvider
 @Composable
 fun MotionLayoutScree(onBack: () -> Unit) {
     HomeScaffold(title = "MotionLayout", onBack = onBack) {
-        Column(Modifier.background(Color.White)) {
+        Column(Modifier.padding(it).background(Color.White)) {
             ButtonMotionLayoutView()
             Spacer(modifier = Modifier.height(200.dp))
             ImageMotionLayout()

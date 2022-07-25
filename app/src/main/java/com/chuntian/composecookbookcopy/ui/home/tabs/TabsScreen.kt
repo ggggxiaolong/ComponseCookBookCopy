@@ -41,7 +41,7 @@ fun TabsScreen(onBack: () -> Unit) {
     val tabs = TabType.values()
     val scope = rememberCoroutineScope()
     HomeScaffold(title = "Tabs", onBack = onBack) {
-        Column {
+        Column(modifier = Modifier.padding(it)) {
             TabRow(
                 selectedTabIndex = pagerState.currentPage,
                 backgroundColor = MaterialTheme.colorScheme.background,

@@ -37,7 +37,6 @@ enum class ChartDemos(val value: String, val path: String) {
     PieChart("Pie Line Chart", PATH.TEMPLATE_CHARTS + "/pieChart"),
 }
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalPagerApi::class)
 @Preview
 @Composable
 fun ChartsScreen() {
@@ -77,6 +76,7 @@ fun RootView(onBack: () -> Unit, controller: NavController) {
     HomeScaffold(title = "Compose Charts", onBack = onBack) {
         Column(
             modifier = Modifier
+                .padding(it)
                 .fillMaxSize()
                 .padding(16.dp)
         ) {

@@ -34,14 +34,7 @@ fun DependencyHandler.addKotlinTestDependencies() {
 }
 
 fun DependencyHandler.addDataDependencies() {
-    add("kapt", Dependencies.roomCompiler){
-        exclude(
-            mapOf(
-                "group" to "org.jetbrains",
-                "module" to "annotations"
-            )
-        )
-    }
+    add("kapt", Dependencies.roomCompiler)
     dataDependencies.forEach {
         add("implementation", it)
     }

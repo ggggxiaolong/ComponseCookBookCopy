@@ -6,6 +6,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.*
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -21,17 +24,17 @@ import java.util.*
 @ExperimentalFoundationApi
 @Composable
 fun ListScreen(type: String, onBack: () -> Unit) {
-    HomeScaffold(title = type.lowercase().capitalize(Locale.ENGLISH) + " List", onBack = onBack) {
+    HomeScaffold(title = type.lowercase().capitalize(Locale.ENGLISH) + " List", onBack = onBack) {padding ->
         Timber.i(type)
         when (type) {
             ListViewType.VERTICAL.name -> {
-                VerticalListView()
+                VerticalListView(padding)
             }
             ListViewType.HORIZONTAL.name -> {
-                HorizontalListView()
+                HorizontalListView(padding)
             }
             ListViewType.GRID.name -> {
-                GridListItemView()
+                GridListItemView(padding)
             }
             ListViewType.MIX.name -> {
             }
@@ -48,10 +51,10 @@ private fun ListItemDivider() {
 }
 
 @Composable
-fun VerticalListView() {
+fun VerticalListView(padding: PaddingValues) {
     val items = DemoDataProvider.itemList
     Timber.i("VerticalListView")
-    LazyColumn {
+    LazyColumn(modifier = Modifier.padding(padding)) {
         items(
             count = items.size,
             itemContent = { index ->
@@ -67,9 +70,9 @@ fun VerticalListView() {
 }
 
 @Composable
-fun HorizontalListView() {
+fun HorizontalListView(padding: PaddingValues) {
     val list = DemoDataProvider.itemList
-    Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+    Column(verticalArrangement = Arrangement.spacedBy(16.dp), modifier = Modifier.padding(padding)) {
         Text(
             text = "Good Food",
             modifier = Modifier.padding(16.dp),
@@ -86,11 +89,12 @@ fun HorizontalListView() {
 
 @ExperimentalFoundationApi
 @Composable
-fun GridListItemView() {
+fun GridListItemView(padding: PaddingValues) {
     val list = DemoDataProvider.itemList
     LazyVerticalGrid(
-        cells = GridCells.Fixed(count = 2),
-        contentPadding = PaddingValues(start = 4.dp, end = 4.dp)
+        columns = GridCells.Fixed(count = 2),
+        contentPadding = PaddingValues(start = 4.dp, end = 4.dp),
+        modifier = Modifier.padding(padding)
     ) {
         items(list) {
             GridListItem(item = it)

@@ -33,14 +33,14 @@ import com.chuntian.theme.Teal200
 @ExperimentalComposeUiApi
 @Composable
 fun ModifiersScreen(onBack: () -> Unit) {
-    HomeScaffold(title = "Modifiers", onBack = onBack) { ModifiersView() }
+    HomeScaffold(title = "Modifiers", onBack = onBack) { ModifiersView(it) }
 }
 
 @ExperimentalComposeUiApi
 @Composable
-private fun ModifiersView() {
+private fun ModifiersView(padding: PaddingValues) {
     val typography = MaterialTheme.typography
-    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+    Column(modifier = Modifier.padding(padding).verticalScroll(rememberScrollState())) {
         Text(
             text = "Order in modifier values matters",
             style = typography.titleMedium,

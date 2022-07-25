@@ -3,9 +3,10 @@ package com.chuntian.composecookbookcopy.ui.templates.root
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.GridCells
+import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -33,12 +34,11 @@ fun TemplateRootScreen() {
 
 }
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun HorizontalScreenView(items: List<TemplateScreenItems>) {
     val control = LocalNavControl.current
     val cardElevation = CardDefaults.cardElevation()
-    LazyVerticalGrid(cells = GridCells.Adaptive(150.dp)) {
+    LazyVerticalGrid(columns = GridCells.Adaptive(150.dp)) {
         items(items = items, itemContent = { item ->
             Surface(
                 modifier = Modifier
@@ -48,8 +48,14 @@ fun HorizontalScreenView(items: List<TemplateScreenItems>) {
                 shape = RoundedCornerShape(8.dp),
                 color = MaterialTheme.colorScheme.primary,
                 contentColor = contentColorFor(MaterialTheme.colorScheme.primary),
-                tonalElevation = cardElevation.tonalElevation(interactionSource = null).value,
-                shadowElevation = cardElevation.shadowElevation(interactionSource = null).value
+                tonalElevation = cardElevation.tonalElevation(
+                    enabled = true,
+                    interactionSource = null
+                ).value,
+                shadowElevation = cardElevation.shadowElevation(
+                    enabled = true,
+                    interactionSource = null
+                ).value
             ) {
                 Column(
                     modifier = Modifier.fillMaxSize(),

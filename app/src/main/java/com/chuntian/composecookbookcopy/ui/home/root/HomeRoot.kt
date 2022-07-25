@@ -5,9 +5,10 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -39,6 +40,7 @@ import com.chuntian.data.model.HomeScreenItems
 import com.chuntian.theme.*
 import com.chuntian.theme.R
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class)
 @ExperimentalFoundationApi
@@ -70,7 +72,8 @@ fun HomeRoot(appThemeState: MutableState<AppThemeState>) {
                     }
                 })
         },
-        content = {
+        content = { padding ->
+            Timber.i(padding.toString())
             HomeRootScreenContent(
                 showMenu = showMenu,
                 onPalletChange = { newPalletSelected ->
@@ -80,7 +83,8 @@ fun HomeRoot(appThemeState: MutableState<AppThemeState>) {
                     IOScope().launch {
                         DB.instance().themeDao().save(newData.toTheme())
                     }
-                }
+                },
+                modifier = Modifier.padding(bottom = padding.calculateBottomPadding()),
             )
         }
     )
@@ -107,10 +111,9 @@ fun HomeRootScreenListView(
                 .padding(8.dp)
                 .clickable { homeRootItemClicked(homeScreenItems, controller) }
                 .height(150.dp),
-            containerColor = MaterialTheme.colorScheme.primary,
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primary, contentColor = MaterialTheme.colorScheme.onPrimary),
             shape = RoundedCornerShape(8.dp),
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-            contentColor = MaterialTheme.colorScheme.onPrimary
         ) {
             Text(
                 text = homeScreenItems.value,
@@ -188,14 +191,15 @@ fun PalletMenu(
 fun HomeRootScreenContent(
     showMenu: MutableState<Boolean>,
     onPalletChange: (ColorPallet) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val list = remember { DemoDataProvider.homeScreenListItems }
     val screenWidth = LocalConfiguration.current.screenWidthDp
     val isWiderScreen = screenWidth > 550
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = modifier.fillMaxSize()) {
         if (isWiderScreen) {
             LazyVerticalGrid(
-                cells = GridCells.Adaptive(150.dp),
+                columns = GridCells.Adaptive(150.dp),
                 contentPadding = PaddingValues(8.dp)
             ) {
                 items(items = list, itemContent = {
@@ -206,7 +210,7 @@ fun HomeRootScreenContent(
                 })
             }
         } else {
-            LazyColumn(modifier = Modifier.testTag(TestTags.HOME_SCREEN_LIST)) {
+            LazyColumn(modifier = modifier.testTag(TestTags.HOME_SCREEN_LIST)) {
                 items(items = list, itemContent = {
                     HomeRootScreenListView(
                         homeScreenItems = it,

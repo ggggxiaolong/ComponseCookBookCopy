@@ -33,6 +33,7 @@ fun BarChartScreen(onBack: () -> Unit) {
             values = createRandomFloatList(),
             barColors = listOf(Blue, Purple, Orange, Yellow),
             modifier = Modifier
+                .padding(it)
                 .fillMaxWidth()
                 .height(500.dp)
         )
