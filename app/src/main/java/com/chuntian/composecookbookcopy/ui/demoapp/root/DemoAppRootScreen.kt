@@ -49,8 +49,8 @@ fun HorizontalScreenView(items: List<DemoItems>) {
                 shape = RoundedCornerShape(8.dp),
                 color = MaterialTheme.colorScheme.primary,
                 contentColor = contentColorFor(MaterialTheme.colorScheme.primary),
-                tonalElevation = cardElevation.tonalElevation(enabled = true, interactionSource = null).value,
-                shadowElevation = cardElevation.shadowElevation(enabled = true, interactionSource = null).value
+//                tonalElevation = cardElevation.tonalElevation(enabled = true, interactionSource = null).value,
+//                shadowElevation = cardElevation.shadowElevation(enabled = true, interactionSource = null).value
             ) {
                 Column(
                     modifier = Modifier.fillMaxSize(),

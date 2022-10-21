@@ -1,6 +1,5 @@
 import com.chuntian.buildsrc.configurations.ProjectConfigs
 import com.chuntian.buildsrc.dependencies.*
-import org.jetbrains.kotlin.gradle.targets.js.npm.includedRange
 
 plugins {
     id("com.android.application")
@@ -10,7 +9,7 @@ plugins {
 
 android {
     compileSdk = ProjectConfigs.compileSdkVersion
-
+    namespace = "com.chuntian.composecookbookcopy"
     defaultConfig {
         multiDexEnabled = true
         applicationId = ProjectConfigs.applicationId
@@ -73,6 +72,7 @@ android {
             it.useJUnitPlatform()
         }
     }
+    namespace = "com.chuntian.composecookbookcopy"
 }
 
 dependencies {

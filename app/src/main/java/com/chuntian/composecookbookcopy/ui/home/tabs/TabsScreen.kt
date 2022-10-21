@@ -3,6 +3,7 @@ package com.chuntian.composecookbookcopy.ui.home.tabs
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ScrollableTabRow
 import androidx.compose.material.Tab
@@ -98,10 +99,10 @@ fun AppleView() {
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun GoogleView() {
-    GridListItemView()
+    GridListItemView(PaddingValues(0.dp))
 }
 
 @Composable
 fun AmazonView() {
-    VerticalListView()
+    VerticalListView(PaddingValues(0.dp))
 }

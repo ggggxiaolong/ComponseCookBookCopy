@@ -19,13 +19,13 @@ import com.chuntian.composecookbookcopy.utils.TestTags
 import com.chuntian.data.DemoDataProvider
 import com.chuntian.data.model.Item
 import com.chuntian.theme.ComposeCookBookCopyTheme
-import com.chuntian.theme.Shapes
+//import com.chuntian.theme.Shapes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HorizontalListItem(item: Item, modifier: Modifier = Modifier) {
     Card(
-        shape = Shapes.medium,
+//        shape = Shapes.medium,
         modifier = modifier
             .size(280.dp, 200.dp)
             .testTag("${TestTags.HOME_SCREEN_LIST_ITEM}-${item.id}")

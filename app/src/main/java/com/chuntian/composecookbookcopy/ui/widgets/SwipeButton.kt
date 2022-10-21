@@ -20,11 +20,13 @@ import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.runtime.*
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.LayoutDirection
@@ -48,7 +50,12 @@ fun SwipeButton(
     iconPadding: PaddingValues = PaddingValues(2.dp),
     content: @Composable RowScope.() -> Unit,
 ) {
-    val contentColor by colors.contentColor(enabled = enabled)
+    val enableContainerColor: Color = MaterialTheme.colorScheme.primary
+    val enableContentColor: Color = MaterialTheme.colorScheme.onPrimary
+    val disabledContainerColor: Color = MaterialTheme.colorScheme.onSurface.copy(0.12f)
+    val disabledContentColor: Color = MaterialTheme.colorScheme.onSurface.copy(0.38f)
+    val containerColor by rememberUpdatedState(if (enabled) enableContainerColor else disabledContainerColor)
+    val contentColor by rememberUpdatedState(if (enabled) enableContentColor else disabledContentColor)
     val dragOffset = remember { mutableStateOf(0f) }
     val collapsed = swipeButtonState == SwipeButtonState.Collapsed
     val swipe = swipeButtonState == SwipeButtonState.Swiped
@@ -56,17 +63,17 @@ fun SwipeButton(
     Surface(
         modifier = modifier,
         shape = shape,
-        color = colors.containerColor(enabled = enabled).value,
+        color = containerColor,
         contentColor = contentColor,
         border = border,
-        shadowElevation = elevation?.shadowElevation(
-            enabled = enabled,
-            interactionSource = interactionSource
-        )?.value ?: 0.dp,
-        tonalElevation = elevation?.tonalElevation(
-            enabled = enabled,
-            interactionSource = interactionSource
-        )?.value ?: 0.dp,
+//        shadowElevation = elevation?.shadowElevation(
+//            enabled = enabled,
+//            interactionSource = interactionSource
+//        )?.value ?: 0.dp,
+//        tonalElevation = elevation?.tonalElevation(
+//            enabled = enabled,
+//            interactionSource = interactionSource
+//        )?.value ?: 0.dp,
     ) {
         BoxWithConstraints(
             modifier = Modifier.fillMaxSize(),
@@ -102,7 +109,7 @@ fun SwipeButton(
                 }
                 else -> {
                     dragOffset.value = 0f
-                    CompositionLocalProvider(LocalContentAlpha provides contentColor.alpha) {
+                    CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
                         ProvideTextStyle(value = MaterialTheme.typography.bodyMedium) {
                             Row(
                                 modifier
@@ -148,7 +155,8 @@ fun SwipeButton(
                             if (rotateIcon) {
                                 rotationZ += dragOffset.value / 5
                             }
-                        }, tint = colors.containerColor(enabled = enabled).value
+                        },
+                        tint = containerColor
                     )
                 }
             }

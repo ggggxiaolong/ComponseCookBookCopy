@@ -12,3 +12,6 @@ dependencies {
     addComposeOfficialDependencies()
     addCoreAndroidUiDependencies()
 }
+android {
+    namespace = "com.chuntian.demo.youtube"
+}

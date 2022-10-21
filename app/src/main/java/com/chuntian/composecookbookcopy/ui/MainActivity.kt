@@ -2,9 +2,9 @@ package com.chuntian.composecookbookcopy.ui
 
 import android.content.res.Configuration
 import android.os.Bundle
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.animateDpAsState
@@ -17,6 +17,7 @@ import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.*
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -32,7 +33,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.view.WindowCompat
 import com.chuntian.composecookbookcopy.R
 import com.chuntian.composecookbookcopy.theme.AppThemeState
 import com.chuntian.composecookbookcopy.ui.animation.AnimationScreen
@@ -57,12 +57,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ComponentActivity() {
     @OptIn(
         ExperimentalMaterial3Api::class,
         ExperimentalAnimationApi::class,
         ExperimentalPagerApi::class,
-        ExperimentalComposeUiApi::class,
         ExperimentalFoundationApi::class
     )
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -202,11 +201,10 @@ fun HomeScreenContent(
     }
 }
 
-@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterialApi::class, ExperimentalComposeUiApi::class)
 @ExperimentalMaterial3Api
 @ExperimentalAnimationApi
 @ExperimentalPagerApi
-@ExperimentalComposeUiApi
 @ExperimentalFoundationApi
 @Composable
 fun MainAppContent(appThemeState: MutableState<AppThemeState>) {
@@ -329,10 +327,8 @@ fun BaseView(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @ExperimentalPagerApi
-@ExperimentalComposeUiApi
 @ExperimentalAnimationApi
 @ExperimentalFoundationApi
-@ExperimentalMaterialApi
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {

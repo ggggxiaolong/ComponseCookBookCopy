@@ -44,7 +44,7 @@ fun Appbars() {
 @Composable
 fun TopAppbars() {
     Subtitle(subtitle = "Top App Bar")
-    SmallTopAppBar(title = { Text(text = "Home") }, navigationIcon = {
+    TopAppBar(title = { Text(text = "Home") }, navigationIcon = {
         IconButton(onClick = { }) {
             Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null)
         }

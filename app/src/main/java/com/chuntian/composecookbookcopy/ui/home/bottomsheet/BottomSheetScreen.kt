@@ -36,7 +36,7 @@ fun BottomSheetScreen(onBack: () -> Unit) {
     val sheetState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
     BottomSheetScaffold(
         topBar = {
-            SmallTopAppBar(title = { Text(text = "BottomSheet") }, navigationIcon = {
+            TopAppBar(title = { Text(text = "BottomSheet") }, navigationIcon = {
                 IconButton(
                     onClick = onBack
                 ) {

@@ -131,7 +131,7 @@ fun ImageChip(
         if (enabled) BorderStroke(width = 1.dp, color = MaterialTheme.colorScheme.primary) else null
     val colors =
         if (enabled && !selected) ButtonDefaults.outlinedButtonColors() else ButtonDefaults.buttonColors()
-    val contentColor = colors.contentColor(enabled = enabled).value
+//    val contentColor = colors.contentColor(enabled = enabled).value
     Surface(
         modifier = Modifier
             .clickable(
@@ -142,8 +142,8 @@ fun ImageChip(
                 onClick = onClick
             ),
         shape = RoundedCornerShape(8.dp),
-        color = colors.containerColor(enabled = enabled).value,
-        contentColor = contentColor,
+//        color = colors.,
+//        contentColor = contentColor,
         border = border
     ) {
         Row(
@@ -161,7 +161,8 @@ fun ImageChip(
             )
             Text(
                 text = title,
-                style = MaterialTheme.typography.labelLarge.copy(color = contentColor),
+//                style = MaterialTheme.typography.labelLarge.copy(color = contentColor),
+                style = MaterialTheme.typography.labelLarge,
                 modifier = Modifier.padding(8.dp)
             )
         }

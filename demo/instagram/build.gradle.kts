@@ -14,3 +14,6 @@ dependencies {
     addComposeThirdPartyDependencies()
     addCoreAndroidUiDependencies()
 }
+android {
+    namespace = "com.chuntian.demo.instagram"
+}

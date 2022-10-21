@@ -10,3 +10,6 @@ dependencies {
     addComposeThirdPartyDependencies()
     addCoreAndroidUiDependencies()
 }
+android {
+    namespace = "com.chuntian.theme"
+}

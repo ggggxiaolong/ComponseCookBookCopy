@@ -15,6 +15,7 @@ android {
             }
         }
     }
+    namespace = "com.chuntian.data"
 }
 dependencies {
     addDataDependencies()

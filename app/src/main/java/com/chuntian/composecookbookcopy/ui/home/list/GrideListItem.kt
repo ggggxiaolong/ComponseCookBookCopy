@@ -20,13 +20,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chuntian.composecookbookcopy.utils.TestTags
 import com.chuntian.data.model.Item
-import com.chuntian.theme.Shapes
+//import com.chuntian.theme.Shapes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GridListItem(item: Item, modifier: Modifier = Modifier) {
     Card(
-        shape = Shapes.medium,
+//        shape = Shapes.medium,
         modifier = modifier
             .fillMaxWidth()
             .padding(8.dp)
